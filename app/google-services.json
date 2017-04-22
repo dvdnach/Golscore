@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "772850107222",
+    "firebase_url": "https://golscore-af408.firebaseio.com",
+    "project_id": "golscore-af408",
+    "storage_bucket": "golscore-af408.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:772850107222:android:f9d0c041eeff46a2",
+        "android_client_info": {
+          "package_name": "com.example.dm2.golscore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "772850107222-cp6d3ascqr6hgnjjrrlpdh59e26kibj9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDDVR0AzaIZxK9IoN-Gs1A2EZRqA6VWLk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

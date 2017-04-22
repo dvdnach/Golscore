@@ -1,31 +1,43 @@
 package com.example.dm2.golscore;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.example.dm2.golscore.Holder.ClubHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView recView;
+    private DatabaseReference dbPrediccion;
+    private ChildEventListener eventListener;
+    private TextView id, nombre;
+    private RecyclerView listaRV;
+    //private ArrayList<Club> datos;
+    private FirebaseRecyclerAdapter mAdapter;
 
     private ArrayList<Liga> datos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -38,18 +50,32 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        dbPrediccion = FirebaseDatabase.getInstance().getReference().child("Club");
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.listaRV);
+        recycler.setSelected(true);
+        recycler.setHasFixedSize(true);
+        recycler.setLayoutManager(new LinearLayoutManager(this));
+
+        mAdapter = new FirebaseRecyclerAdapter<Club, ClubHolder>(Club.class, R.layout.club_list_item, ClubHolder.class, dbPrediccion) {
+            @Override
+            public void populateViewHolder(ClubHolder clubViewHolder, Club club, int position) {
+                Log.e("Club",""+club.getId());
+                clubViewHolder.setId(String.valueOf(club.getId()));
+                clubViewHolder.setNombre(club.getNombre());
+            }
+        };
+        recycler.setAdapter(mAdapter);
+
         //inicialización de la lista de datos de ejemplo
-        datos = new ArrayList<Liga>();
+        /*datos = new ArrayList<Liga>();
         for(int i=0; i<10; i++)
-            datos.add(new Liga("Liga" + i));
+            datos.add(new Liga("Liga" + i));*/
 
-        //Inicialización RecyclerView
-        recView = (RecyclerView) findViewById(R.id.listaRV);
-        recView.setHasFixedSize(true);
 
-        final LigasAdapter adaptador = new LigasAdapter(datos);
 
-        recView.setAdapter(adaptador);
+        //final LigasAdapter adaptador = new LigasAdapter(datos);
+
+        //recView.setAdapter(adaptador);
     }
 
     @Override
