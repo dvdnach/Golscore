@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.dm2.golscore.Clases.Categoria;
 import com.example.dm2.golscore.Clases.Subcategoria;
+import com.example.dm2.golscore.LigaActivity;
 import com.example.dm2.golscore.R;
 import com.example.dm2.golscore.SubCategoriaActivity;
 
@@ -37,10 +38,8 @@ public class SubcategoriaAdapter extends RecyclerView.Adapter<SubcategoriaAdapte
         holder.nombreSubcategoriaTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(v.getContext(), SubCategoriaActivity.class);
-                intent.putExtra("idCategoria",String.valueOf(c.getId()));
-                v.getContext().startActivity(intent);*/
-                Toast.makeText(v.getContext(), s.getNombre(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(v.getContext(), LigaActivity.class);
+                v.getContext().startActivity(intent);
             }
         });
     }
