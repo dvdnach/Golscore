@@ -8,20 +8,19 @@ import com.example.dm2.golscore.R;
 
 public class ClubHolder extends RecyclerView.ViewHolder{
 
-    private View mView;
+    private final TextView idTv,nombreTV;
 
     public ClubHolder(View itemView) {
         super(itemView);
-        mView = itemView;
+        idTv = (TextView) itemView.findViewById(R.id.idTV);
+        nombreTV= (TextView) itemView.findViewById(R.id.nombreTV);
     }
 
     public void setId(String id) {
-        TextView field = (TextView) mView.findViewById(R.id.idTV);
-        field.setText(id);
+        idTv.setText(id);
     }
 
     public void setNombre(String nombre) {
-        TextView field = (TextView) mView.findViewById(R.id.nombreTV);
-        field.setText(nombre);
+        nombreTV.setText(nombre);
     }
 }

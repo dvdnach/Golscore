@@ -1,6 +1,7 @@
 package com.example.dm2.golscore;
 
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
@@ -12,27 +13,27 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.dm2.golscore.Holder.ClubHolder;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.ChildEventListener;
+import com.example.dm2.golscore.Adapter.CategoriaAdapter;
+import com.example.dm2.golscore.Clases.Categoria;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private RecyclerView recView;
-    private DatabaseReference dbPrediccion;
-    private ChildEventListener eventListener;
-    private TextView id, nombre;
-    private RecyclerView listaRV;
-    //private ArrayList<Club> datos;
-    private FirebaseRecyclerAdapter mAdapter;
+    private RecyclerView categoriaRV;
+    private List<Categoria> listaCategoria;
+    private CategoriaAdapter adapter;
 
-    private ArrayList<Liga> datos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,13 +51,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        dbPrediccion = FirebaseDatabase.getInstance().getReference().child("Club");
-        RecyclerView recycler = (RecyclerView) findViewById(R.id.listaRV);
+        /*dbCategoria = FirebaseDatabase.getInstance().getReference().child("Club");
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.categoriaRV);
         recycler.setSelected(true);
         recycler.setHasFixedSize(true);
         recycler.setLayoutManager(new LinearLayoutManager(this));
 
-        mAdapter = new FirebaseRecyclerAdapter<Club, ClubHolder>(Club.class, R.layout.club_list_item, ClubHolder.class, dbPrediccion) {
+        mAdapter = new FirebaseRecyclerAdapter<Club, ClubHolder>(Club.class, R.layout.club_list_item, ClubHolder.class, dbCategoria) {
             @Override
             public void populateViewHolder(ClubHolder clubViewHolder, Club club, int position) {
                 Log.e("Club",""+club.getId());
@@ -64,18 +65,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 clubViewHolder.setNombre(club.getNombre());
             }
         };
-        recycler.setAdapter(mAdapter);
+        recycler.setAdapter(mAdapter);*/
+        categoriaRV=(RecyclerView) findViewById(R.id.categoriaRV);
+        categoriaRV.setLayoutManager(new LinearLayoutManager(this));
 
-        //inicialización de la lista de datos de ejemplo
-        /*datos = new ArrayList<Liga>();
-        for(int i=0; i<10; i++)
-            datos.add(new Liga("Liga" + i));*/
+        listaCategoria=new ArrayList<>();
+        adapter= new CategoriaAdapter(listaCategoria);
 
+        categoriaRV.setAdapter(adapter);
 
+        FirebaseDatabase dbCategoria=FirebaseDatabase.getInstance();
+        dbCategoria.getReference().child("Categoria").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listaCategoria.removeAll(listaCategoria);
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Categoria categoria=snapshot.getValue(Categoria.class);
+                    listaCategoria.add(categoria);
+                }
+                adapter.notifyDataSetChanged();
+            }
 
-        //final LigasAdapter adaptador = new LigasAdapter(datos);
-
-        //recView.setAdapter(adaptador);
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("DATABASSE ERROR",databaseError.getMessage());
+            }
+        });
     }
 
     @Override
@@ -134,4 +149,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

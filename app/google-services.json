@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "772850107222-9jqskcn1mebon4oiln4q5pu7ggmqakmm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dm2.golscore",
+            "certificate_hash": "4a845313315efbba2f94666e0bd7cc5960cbc358"
+          }
+        },
+        {
           "client_id": "772850107222-cp6d3ascqr6hgnjjrrlpdh59e26kibj9.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "772850107222-cp6d3ascqr6hgnjjrrlpdh59e26kibj9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
