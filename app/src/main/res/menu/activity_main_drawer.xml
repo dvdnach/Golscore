@@ -5,12 +5,12 @@
         <menu>
             <item
                 android:id="@+id/nav_camera"
-                android:icon="@drawable/ic_menu_camera"
-                android:title="Import" />
+                android:icon="@drawable/common_google_signin_btn_icon_dark"
+                android:title="Login" />
             <item
                 android:id="@+id/nav_gallery"
                 android:icon="@drawable/ic_menu_gallery"
-                android:title="Gallery" />
+                android:title="Ejemplo Mapa" />
             <item
                 android:id="@+id/nav_slideshow"
                 android:icon="@drawable/ic_menu_slideshow"
