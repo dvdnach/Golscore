@@ -45,5 +45,8 @@ public class DetallesClubActivity extends AppCompatActivity {
         tabs.addTab(spec);
 
         tabs.setCurrentTab(0);
+        for (int i = 0; i < tabs.getTabWidget().getChildCount(); i++) {
+            tabs.getTabWidget().getChildAt(i).setPadding(8,0,8,0);
+        }
     }
 }
