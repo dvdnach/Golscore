@@ -51,21 +51,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        /*dbCategoria = FirebaseDatabase.getInstance().getReference().child("Club");
-        RecyclerView recycler = (RecyclerView) findViewById(R.id.categoriaRV);
-        recycler.setSelected(true);
-        recycler.setHasFixedSize(true);
-        recycler.setLayoutManager(new LinearLayoutManager(this));
-
-        mAdapter = new FirebaseRecyclerAdapter<Club, ClubHolder>(Club.class, R.layout.club_list_item, ClubHolder.class, dbCategoria) {
-            @Override
-            public void populateViewHolder(ClubHolder clubViewHolder, Club club, int position) {
-                Log.e("Club",""+club.getId());
-                clubViewHolder.setId(String.valueOf(club.getId()));
-                clubViewHolder.setNombre(club.getNombre());
-            }
-        };
-        recycler.setAdapter(mAdapter);*/
         categoriaRV=(RecyclerView) findViewById(R.id.categoriaRV);
         categoriaRV.setLayoutManager(new LinearLayoutManager(this));
 

@@ -24,7 +24,8 @@
         <activity android:name=".SubCategoriaActivity" />
         <activity
             android:name=".LigaActivity"
-            android:label="@string/title_activity_liga"></activity>
+            android:label="@string/title_activity_liga" />
+        <activity android:name=".DetallesClubActivity"></activity>
     </application>
 
 </manifest>

@@ -27,7 +27,6 @@ public class SubCategoriaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_categoria);
         final String idCategoria=getIntent().getExtras().getString("idCategoria");
-        Log.e("idCategoria",idCategoria);
 
         subcategoriaRV=(RecyclerView) findViewById(R.id.subcategoriaRV);
         subcategoriaRV.setLayoutManager(new LinearLayoutManager(this));

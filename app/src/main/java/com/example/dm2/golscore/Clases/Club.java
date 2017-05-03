@@ -4,13 +4,15 @@ public class Club {
 
     private long Id;
     private String Nombre;
+    private int SubCategoria;
 
     public Club() {
     }
 
-    public Club(long id, String nombre) {
+    public Club(long id, String nombre, int subcategoria) {
         this.Id = id;
         this.Nombre = nombre;
+        this.SubCategoria=subcategoria;
     }
 
     public long getId() {
@@ -27,6 +29,14 @@ public class Club {
 
     public void setNombre(String nombre) {
         this.Nombre = nombre;
+    }
+
+    public int getSubcategoria() {
+        return SubCategoria;
+    }
+
+    public void setSubcategoria(int subcategoria) {
+        SubCategoria = subcategoria;
     }
 
     @Override

@@ -39,6 +39,8 @@ public class SubcategoriaAdapter extends RecyclerView.Adapter<SubcategoriaAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), LigaActivity.class);
+                intent.putExtra("nombreSubcategoria",String.valueOf(s.getNombre()));
+                intent.putExtra("idSubcategoria",String.valueOf(s.getId()));
                 v.getContext().startActivity(intent);
             }
         });
