@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private UserLoginTask mAuthTask = null;
+    private UserLoginTask mAuthTask;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -356,6 +356,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 } else {*/
                                     //Toast.makeText(LoginActivity.this,"Auth Failed", Toast.LENGTH_LONG).show();
                                // }
+                                //Toast.makeText(LoginActivity.this,"Auth Failed", Toast.LENGTH_LONG).show();
                                 exitoLogin = false;
                             } else {
                                 exitoLogin=true;

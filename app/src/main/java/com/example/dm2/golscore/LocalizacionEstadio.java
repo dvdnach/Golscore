@@ -37,8 +37,12 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
         setContentView(R.layout.activity_localizacion_estadio);
 
         btnVista=(Button)findViewById(R.id.btnVista);
+
+        //recibimos el equipo
         Bundle bundle = getIntent().getExtras();
-        //equipo="S.D Alsasua";
+
+        //ejemplo equipo
+        equipo="S.D Alsasua";
        // equipo=bundle.getString("Equipo");
 
         MapFragment mapFragment=(MapFragment)getFragmentManager().findFragmentById(R.id.map);
