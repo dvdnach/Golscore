@@ -2,7 +2,7 @@ package com.example.dm2.golscore.Clases;
 
 public class Equipo {
 
-    private String categoria;
+    private int categoria;
     private String escudo;
     private String genero;
     private int grupo;
@@ -12,7 +12,7 @@ public class Equipo {
     private int puntos;
     private int total_goles;
 
-    public Equipo(String categoria, String escudo, String genero, int grupo, int id, int id_club, String nombre, int puntos, int total_goles) {
+    public Equipo(int categoria, String escudo, String genero, int grupo, int id, int id_club, String nombre, int puntos, int total_goles) {
         this.categoria = categoria;
         this.escudo=escudo;
         this.genero = genero;
@@ -27,11 +27,11 @@ public class Equipo {
     public Equipo() {
     }
 
-    public String getCategoria() {
+    public int getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
 

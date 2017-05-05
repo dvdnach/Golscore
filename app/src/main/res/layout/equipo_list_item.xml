@@ -19,6 +19,7 @@
             android:clickable="true"
             android:background="@drawable/background_equipos">
             <ImageView
+                android:id="@+id/escudoEquipoIV"
                 android:layout_width="@dimen/image_45dp"
                 android:layout_height="@dimen/image_45dp"
                 android:padding="@dimen/margin_5dp"

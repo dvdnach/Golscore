@@ -17,6 +17,9 @@ public class DetallesClubActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles_club);
 
+        String nombreEquipo=getIntent().getExtras().getString("nombreEquipo");
+        setTitle(nombreEquipo);
+
         informacionTL=(TabLayout) findViewById(R.id.informacionTL);
         informacionTL.setTabMode(TabLayout.MODE_SCROLLABLE);
     }

@@ -24,7 +24,7 @@ import java.util.List;
 public class LigaActivity extends AppCompatActivity {
 
     private FrameLayout clubFL;
-    private String nombreSucategoria,idGrupo;
+    private String nombreGrupo,idGrupo;
     private RecyclerView clubRV;
     private List<Equipo> listaEquipo;
     private EquipoAdapter adapter;
@@ -55,7 +55,7 @@ public class LigaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_liga);
 
         clubFL=(FrameLayout)findViewById(R.id.clubFL);
-        nombreSucategoria=getIntent().getExtras().getString("nombreSubcategoria");
+        nombreGrupo=getIntent().getExtras().getString("nombreGrupo");
         idGrupo=getIntent().getExtras().getString("idGrupo");
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -64,7 +64,7 @@ public class LigaActivity extends AppCompatActivity {
     }
 
     public void sacarEquipos(){
-        setTitle(nombreSucategoria);
+        setTitle(nombreGrupo);
         DatabaseReference dbClub=FirebaseDatabase.getInstance().getReference().child("Equipo");
 
         clubRV=(RecyclerView) findViewById(R.id.clubsRV);
@@ -81,7 +81,6 @@ public class LigaActivity extends AppCompatActivity {
                 listaEquipo.removeAll(listaEquipo);
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Equipo equipo=snapshot.getValue(Equipo.class);
-                    Log.e("grupo", ""+equipo.getNombre());
                     if(equipo.getGrupo()==Integer.parseInt(idGrupo))
                         listaEquipo.add(equipo);
                 }

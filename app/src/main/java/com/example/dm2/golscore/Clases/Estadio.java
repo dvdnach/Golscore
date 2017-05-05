@@ -1,4 +1,4 @@
-package com.example.dm2.golscore;
+package com.example.dm2.golscore.Clases;
 
 /**
  * Created by iban on 29/04/2017.
