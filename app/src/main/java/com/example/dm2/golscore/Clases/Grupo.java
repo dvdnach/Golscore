@@ -1,15 +1,17 @@
 package com.example.dm2.golscore.Clases;
 
-public class Categoria {
+public class Grupo {
 
     private int id;
+    private int categoria;
     private String nombre;
 
-    public Categoria() {
+    public Grupo() {
     }
 
-    public Categoria(int id, String nombre) {
+    public Grupo(int id, int categoria, String nombre) {
         this.id = id;
+        this.categoria = categoria;
         this.nombre = nombre;
     }
 
@@ -19,6 +21,14 @@ public class Categoria {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
     }
 
     public String getNombre() {
