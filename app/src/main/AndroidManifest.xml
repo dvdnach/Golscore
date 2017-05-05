@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SubCategoriaActivity" />
+        <activity android:name=".GrupoActivity" />
         <activity
             android:name=".LigaActivity"
             android:label="@string/title_activity_liga" />

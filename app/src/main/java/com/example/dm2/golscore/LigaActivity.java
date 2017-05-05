@@ -9,13 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
-import com.example.dm2.golscore.Adapter.ClubAdapter;
-import com.example.dm2.golscore.Adapter.SubcategoriaAdapter;
-import com.example.dm2.golscore.Clases.Categoria;
-import com.example.dm2.golscore.Clases.Club;
-import com.example.dm2.golscore.Clases.Subcategoria;
+import com.example.dm2.golscore.Adapter.EquipoAdapter;
+import com.example.dm2.golscore.Clases.Equipo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,10 +24,10 @@ import java.util.List;
 public class LigaActivity extends AppCompatActivity {
 
     private FrameLayout clubFL;
-    private String nombreSucategoria,idSubcategoria;
+    private String nombreSucategoria,idGrupo;
     private RecyclerView clubRV;
-    private List<Club> listaClub;
-    private ClubAdapter adapter;
+    private List<Equipo> listaEquipo;
+    private EquipoAdapter adapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -60,7 +56,7 @@ public class LigaActivity extends AppCompatActivity {
 
         clubFL=(FrameLayout)findViewById(R.id.clubFL);
         nombreSucategoria=getIntent().getExtras().getString("nombreSubcategoria");
-        idSubcategoria=getIntent().getExtras().getString("idSubcategoria");
+        idGrupo=getIntent().getExtras().getString("idGrupo");
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -69,26 +65,26 @@ public class LigaActivity extends AppCompatActivity {
 
     public void sacarEquipos(){
         setTitle(nombreSucategoria);
-        DatabaseReference dbClub=FirebaseDatabase.getInstance().getReference().child("Club");
+        DatabaseReference dbClub=FirebaseDatabase.getInstance().getReference().child("Equipo");
 
         clubRV=(RecyclerView) findViewById(R.id.clubsRV);
         clubRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
-        listaClub=new ArrayList<Club>();
-        adapter= new ClubAdapter(listaClub);
+        listaEquipo=new ArrayList<Equipo>();
+        adapter= new EquipoAdapter(listaEquipo);
 
         clubRV.setAdapter(adapter);
 
-        dbClub.orderByChild("Nombre").addValueEventListener(new ValueEventListener() {
+        dbClub.orderByChild("nombre").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                listaClub.removeAll(listaClub);
+                listaEquipo.removeAll(listaEquipo);
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    Club club=snapshot.getValue(Club.class);
-                    if(club.getSubcategoria()==Integer.parseInt(idSubcategoria))
-                        listaClub.add(club);
+                    Equipo equipo=snapshot.getValue(Equipo.class);
+                    Log.e("grupo", ""+equipo.getNombre());
+                    if(equipo.getGrupo()==Integer.parseInt(idGrupo))
+                        listaEquipo.add(equipo);
                 }
-                Log.e("lista",listaClub.size()+"");
                 adapter.notifyDataSetChanged();
             }
 

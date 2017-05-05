@@ -2,7 +2,6 @@ package com.example.dm2.golscore;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
@@ -14,15 +13,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.dm2.golscore.Adapter.CambioAdapter;
 import com.example.dm2.golscore.Adapter.CategoriaAdapter;
+import com.example.dm2.golscore.Clases.Cambio;
+import com.example.dm2.golscore.Clases.Categoria;
 import com.example.dm2.golscore.Clases.Categoria;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         categoriaRV=(RecyclerView) findViewById(R.id.categoriaRV);
         categoriaRV.setLayoutManager(new LinearLayoutManager(this));
 
-        listaCategoria=new ArrayList<>();
+        listaCategoria =new ArrayList<>();
         adapter= new CategoriaAdapter(listaCategoria);
 
         categoriaRV.setAdapter(adapter);
@@ -66,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onDataChange(DataSnapshot dataSnapshot) {
                 listaCategoria.removeAll(listaCategoria);
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    Categoria categoria=snapshot.getValue(Categoria.class);
+                    Categoria categoria =snapshot.getValue(Categoria.class);
                     listaCategoria.add(categoria);
                 }
                 adapter.notifyDataSetChanged();

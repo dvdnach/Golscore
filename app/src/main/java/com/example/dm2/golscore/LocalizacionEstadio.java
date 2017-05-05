@@ -101,12 +101,12 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get user value
-                // Estadio est=dataSnapshot.getValue(Estadio.class);
+                // Equipo est=dataSnapshot.getValue(Equipo.class);
                       /*  est.setLatitud(40.22);
                         est.setLongitud(2);*/
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
-                    // Estadio e=child.getValue(Estadio.class);
+                    // Equipo e=child.getValue(Equipo.class);
                     if(child.child("Equipo").getValue().toString().equals(equipo))
                     {
                         double lat= Double.parseDouble(child.child("Latitud").getValue().toString());

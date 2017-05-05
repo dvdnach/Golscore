@@ -2,41 +2,61 @@ package com.example.dm2.golscore.Clases;
 
 public class Club {
 
-    private long Id;
-    private String Nombre;
-    private int SubCategoria;
+    private int id;
+    private String campo;
+    private double latitud;
+    private double longitud;
+    private String nombre;
 
     public Club() {
     }
 
-    public Club(long id, String nombre, int subcategoria) {
-        this.Id = id;
-        this.Nombre = nombre;
-        this.SubCategoria=subcategoria;
+    public Club(int id, String campo, double latitud, double longitud, String nombre) {
+        this.id = id;
+        this.campo = campo;
+        this.latitud=latitud;
+        this.longitud=longitud;
+        this.nombre=nombre;
     }
 
-    public long getId() {
-        return Id;
+    public int getId() {
+        return id;
     }
 
-    public void setId(long id) {
-        this.Id = id;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCampo() {
+        return campo;
+    }
+
+    public void setCampo(String campo) {
+        this.campo = campo;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.Nombre = nombre;
-    }
-
-    public int getSubcategoria() {
-        return SubCategoria;
-    }
-
-    public void setSubcategoria(int subcategoria) {
-        SubCategoria = subcategoria;
+        this.nombre = nombre;
     }
 
     @Override
