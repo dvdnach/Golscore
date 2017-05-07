@@ -10,27 +10,93 @@
         android:id="@+id/cardCategoriaCV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
+        android:layout_gravity="center"
+        android:background="@drawable/background_equipos">
+        <LinearLayout
+            android:layout_margin="@dimen/margin_2dp"
+            android:layout_marginBottom="@dimen/margin_5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/fechaTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_8sp"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:layout_marginLeft="@dimen/margin_10dp"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:clickable="true"
-            android:background="@drawable/background_equipos">
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_8dp">
+            <TextView
+                android:id="@+id/nombreEquipoLocalTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:layout_marginLeft="@dimen/margin_10dp"
+                android:textAlignment="textEnd"/>
             <ImageView
+                android:id="@+id/escudoEquipoLocalIV"
+                android:layout_width="@dimen/image_45dp"
+                android:layout_height="@dimen/image_45dp"
+                android:padding="@dimen/margin_5dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_equipos"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_5dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/background_resultado">
+
+                <TextView
+                    android:id="@+id/golesLocalTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_15sp"/>
+
+                <TextView
+                    android:id="@+id/separadorTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_15sp"
+                    android:text=" - "/>
+
+                <TextView
+                    android:id="@+id/golesVisitanteTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_15sp"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/escudoEquipoVisitanteIV"
                 android:layout_width="@dimen/image_45dp"
                 android:layout_height="@dimen/image_45dp"
                 android:padding="@dimen/margin_5dp"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_equipos"/>
             <TextView
-                android:id="@+id/nombreClubTV"
-                android:layout_width="match_parent"
+                android:id="@+id/nombreEquipoVisitanteTV"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="textStart"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/margin_10dp"
-                android:layout_marginLeft="@dimen/margin_10dp"/>
+                android:layout_marginEnd="@dimen/margin_10dp"
+                android:layout_marginRight="@dimen/margin_10dp"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
