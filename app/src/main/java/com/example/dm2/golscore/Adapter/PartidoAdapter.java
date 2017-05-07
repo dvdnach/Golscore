@@ -2,6 +2,7 @@ package com.example.dm2.golscore.Adapter;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Gol;
 import com.example.dm2.golscore.Clases.Partido;
+import com.example.dm2.golscore.DetallesPartidosActivity;
 import com.example.dm2.golscore.LigaActivity;
 import com.example.dm2.golscore.R;
 import com.google.firebase.database.DataSnapshot;
@@ -116,15 +118,14 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
             e.printStackTrace();
         }
 
-        /*holder..setOnClickListener(new View.OnClickListener() {
+        holder.cardPartidoCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), LigaActivity.class);
-                intent.putExtra("nombrePartido",String.valueOf(s.getNombre()));
-                intent.putExtra("idPartido",String.valueOf(s.getId()));
+                Intent intent = new Intent(v.getContext(), DetallesPartidosActivity.class);
+                intent.putExtra("idPartido",String.valueOf(partido.getId()));
                 v.getContext().startActivity(intent);
             }
-        });*/
+        });
 
 
     }
@@ -139,6 +140,7 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
         private TextView nombreEquipoLocalTV,golesLocalTV,golesVisitanteTV,nombreEquipoVisitanteTV,separadorTV,fechaTV;
         private ImageView escudoEquipoLocalIV,escudoEquipoVisitanteIV;
         private LinearLayout marcadorLL;
+        private CardView cardPartidoCV;
 
         public PartidoViewHolder(View itemView) {
             super(itemView);
@@ -151,14 +153,11 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
             separadorTV=(TextView)itemView.findViewById(R.id.separadorTV);
             fechaTV=(TextView)itemView.findViewById(R.id.fechaTV);
             marcadorLL=(LinearLayout)itemView.findViewById(R.id.marcadorLL);
+            cardPartidoCV=(CardView)itemView.findViewById(R.id.cardPartidoCV);
         }
 
         public void setNombreEquipoLocalTV(String equipoLocalTV) {
             nombreEquipoLocalTV.setText(equipoLocalTV);
-        }
-
-        public void setEscudoEquipoLocalIV(ImageView escudoEquipoLocalIV) {
-            this.escudoEquipoLocalIV = escudoEquipoLocalIV;
         }
 
         public void setGolesLocalTV(String golLocal) {
@@ -167,10 +166,6 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
 
         public void setGolesVisitanteTV(String golVisitante) {
             golesVisitanteTV.setText(golVisitante);
-        }
-
-        public void setEscudoEquipoVisitanteIV(ImageView escudoEquipoVisitanteIV) {
-            this.escudoEquipoVisitanteIV = escudoEquipoVisitanteIV;
         }
 
         public void setNombreEquipoVisitanteTV(String equipoVisitanteTV) {

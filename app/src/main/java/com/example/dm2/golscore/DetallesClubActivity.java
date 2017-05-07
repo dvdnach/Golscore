@@ -47,8 +47,4 @@ public class DetallesClubActivity extends AppCompatActivity {
             }
         });
     }
-
-    public String getNombreEquipo() {
-        return nombreEquipo;
-    }
 }
