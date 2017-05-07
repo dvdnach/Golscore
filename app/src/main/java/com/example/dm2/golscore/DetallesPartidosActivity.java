@@ -22,7 +22,7 @@ public class DetallesPartidosActivity extends AppCompatActivity {
         Log.e("idPartido",idPartido);
 
         informacionPartidoTL=(TabLayout) findViewById(R.id.informacionPartidoTL);
-        informacionPartidoTL.setTabMode(TabLayout.MODE_SCROLLABLE);
+        informacionPartidoTL.setTabMode(TabLayout.MODE_FIXED);
 
         pagerPartidoVP=(ViewPager)findViewById(R.id.pagerPartidoVP);
 
