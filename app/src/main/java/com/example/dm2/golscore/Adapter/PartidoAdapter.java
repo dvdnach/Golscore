@@ -32,12 +32,14 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
 
     private List<Partido> listaPartido;
     private Calendar hoy;
+    int color;
     public PartidoAdapter(List<Partido> listaPartido) {
         this.listaPartido = listaPartido;
     }
 
     @Override
     public PartidoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        color=parent.getResources().getColor(R.color.colorRed);
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.partido_list_item,parent,false);
         PartidoViewHolder holder=new PartidoViewHolder(view);
         return  holder;
@@ -81,17 +83,19 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
                 Log.e("DATABASSE ERROR",databaseError.getMessage());
             }
         });
-        holder.fechaTV.setText(partido.getFecha());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String stringFechaPartido = partido.getFecha()+" "+partido.getHora();
         try {
             Date datePartido = sdf.parse(stringFechaPartido);
             if(dateHoy.after(datePartido)){
+                holder.fechaTV.setText("FINALIZADO");
+                holder.fechaTV.setTextColor(color);
                 holder.golesLocalTV.setText(Integer.toString(partido.getGol_local()));
                 holder.golesVisitanteTV.setText(Integer.toString(partido.getGol_visitante()));
             }else{
                 holder.golesLocalTV.setText(partido.getHora());
                 holder.separadorTV.setText("");
+                holder.fechaTV.setText(partido.getFecha());
             }
         } catch (ParseException e) {
             e.printStackTrace();
