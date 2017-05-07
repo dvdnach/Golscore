@@ -5,6 +5,7 @@ import android.icu.text.MessagePattern;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.example.dm2.golscore.Adapter.EquipoAdapter;
 import com.example.dm2.golscore.Adapter.PartidoAdapter;
@@ -28,13 +30,15 @@ import java.util.List;
 
 public class LigaActivity extends AppCompatActivity {
 
-    private FrameLayout clubFL,partidosFL,clasificacionFL;
+    private FrameLayout clubFL,clasificacionFL;
+    private LinearLayout partidosFL;
     private String nombreGrupo,idGrupo;
     private RecyclerView clubRV,partidosRV;
     private List<Equipo> listaEquipo;
     private List<Partido> listaPartido;
     private EquipoAdapter adapter;
     private PartidoAdapter adapterPartido;
+    private TabLayout partidosJornadasTL;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -70,10 +74,30 @@ public class LigaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_liga);
 
         clubFL=(FrameLayout)findViewById(R.id.clubFL);
-        partidosFL=(FrameLayout)findViewById(R.id.partidosFL);
+        partidosFL=(LinearLayout)findViewById(R.id.partidosFL);
         clasificacionFL=(FrameLayout)findViewById(R.id.clasificacionFL);
         nombreGrupo=getIntent().getExtras().getString("nombreGrupo");
         idGrupo=getIntent().getExtras().getString("idGrupo");
+
+        listaEquipo=new ArrayList<Equipo>();
+
+        partidosJornadasTL=(TabLayout)findViewById(R.id.partidosJornadasTL);
+        partidosJornadasTL.setTabGravity(TabLayout.GRAVITY_FILL);
+        partidosJornadasTL.setTabMode(TabLayout.MODE_SCROLLABLE);
+        partidosJornadasTL.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                obtenerPartidos();
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -86,8 +110,6 @@ public class LigaActivity extends AppCompatActivity {
 
         clubRV=(RecyclerView) findViewById(R.id.clubsRV);
         clubRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
-        listaEquipo=new ArrayList<Equipo>();
         adapter= new EquipoAdapter(listaEquipo);
 
         clubRV.setAdapter(adapter);
@@ -100,6 +122,12 @@ public class LigaActivity extends AppCompatActivity {
                     Equipo equipo=snapshot.getValue(Equipo.class);
                     if(equipo.getGrupo()==Integer.parseInt(idGrupo))
                         listaEquipo.add(equipo);
+                }
+                if(listaEquipo.size()>0){
+                    partidosJornadasTL.removeAllTabs();
+                    for (int x=0;x<listaEquipo.size();x++){
+                        partidosJornadasTL.addTab(partidosJornadasTL.newTab().setText("J. "+(x+1)));
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -129,7 +157,7 @@ public class LigaActivity extends AppCompatActivity {
                 listaPartido.removeAll(listaPartido);
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Partido partido=snapshot.getValue(Partido.class);
-                    if(partido.getGrupo()==Integer.parseInt(idGrupo)){
+                    if(partido.getGrupo()==Integer.parseInt(idGrupo) && partido.getJornada()==(partidosJornadasTL.getSelectedTabPosition()+1)){
                         listaPartido.add(partido);
                     }
                 }

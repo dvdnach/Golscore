@@ -24,10 +24,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 InfoFragment infoFragment = new InfoFragment();
-                Bundle data = new Bundle();
-
-                data.putString("dato", "lo que sea");
-                infoFragment.setArguments(data);
                 return infoFragment;
             case 1:
                 PlantillaFragment plantillaFragment = new PlantillaFragment();

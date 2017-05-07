@@ -22,20 +22,31 @@
             android:layout_height="wrap_content"/>
     </FrameLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/partidosFL"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="@dimen/activity_horizontal_margin"
         android:layout_weight="1"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:orientation="vertical">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/partidosJornadasTL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:tabTextColor="@color/colorWhiteDark"
+            app:tabSelectedTextColor="@color/colorWhite"
+            app:tabIndicatorColor="@color/colorWhite">
+
+        </android.support.design.widget.TabLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/partidosRV"
             android:scrollbars="vertical"
+            android:layout_margin="@dimen/activity_horizontal_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </FrameLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/clasificacionFL"
