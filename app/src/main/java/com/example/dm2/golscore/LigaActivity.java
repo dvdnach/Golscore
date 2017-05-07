@@ -125,7 +125,7 @@ public class LigaActivity extends AppCompatActivity {
                 }
                 if(listaEquipo.size()>0){
                     partidosJornadasTL.removeAllTabs();
-                    for (int x=0;x<listaEquipo.size();x++){
+                    for (int x=0;x<listaEquipo.size()*2-2;x++){
                         partidosJornadasTL.addTab(partidosJornadasTL.newTab().setText("J. "+(x+1)));
                     }
                 }
