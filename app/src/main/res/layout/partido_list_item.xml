@@ -49,6 +49,7 @@
                 android:src="@drawable/ic_equipos"/>
 
             <LinearLayout
+                android:id="@+id/marcadorLL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/margin_5dp"

@@ -1,6 +1,7 @@
 package com.example.dm2.golscore.Adapter;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dm2.golscore.Clases.Equipo;
@@ -32,7 +34,8 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
 
     private List<Partido> listaPartido;
     private Calendar hoy;
-    int color;
+    int color,colorVerde;
+    Drawable backVerder;
     public PartidoAdapter(List<Partido> listaPartido) {
         this.listaPartido = listaPartido;
     }
@@ -40,6 +43,8 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
     @Override
     public PartidoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         color=parent.getResources().getColor(R.color.colorRed);
+        colorVerde=parent.getResources().getColor(R.color.colorVerde);
+        backVerder=parent.getResources().getDrawable(R.drawable.background_resultado_directo);
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.partido_list_item,parent,false);
         PartidoViewHolder holder=new PartidoViewHolder(view);
         return  holder;
@@ -87,12 +92,22 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
         String stringFechaPartido = partido.getFecha()+" "+partido.getHora();
         try {
             Date datePartido = sdf.parse(stringFechaPartido);
-            if(dateHoy.after(datePartido)){
+            Calendar calPartidoFin = Calendar.getInstance();
+            calPartidoFin.setTime(datePartido);
+            calPartidoFin.add(Calendar.HOUR, 2);
+            Date datePartidoFin = calPartidoFin.getTime();
+            if (dateHoy.before(datePartidoFin) && dateHoy.after(datePartido)) {
+                holder.fechaTV.setText("EN JUEGO");
+                holder.fechaTV.setTextColor(colorVerde);
+                holder.marcadorLL.setBackground(backVerder);
+                holder.golesLocalTV.setText(Integer.toString(partido.getGol_local()));
+                holder.golesVisitanteTV.setText(Integer.toString(partido.getGol_visitante()));
+            } else if (dateHoy.after(datePartido)) {
                 holder.fechaTV.setText("FINALIZADO");
                 holder.fechaTV.setTextColor(color);
                 holder.golesLocalTV.setText(Integer.toString(partido.getGol_local()));
                 holder.golesVisitanteTV.setText(Integer.toString(partido.getGol_visitante()));
-            }else{
+            }  else{
                 holder.golesLocalTV.setText(partido.getHora());
                 holder.separadorTV.setText("");
                 holder.fechaTV.setText(partido.getFecha());
@@ -123,6 +138,7 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
 
         private TextView nombreEquipoLocalTV,golesLocalTV,golesVisitanteTV,nombreEquipoVisitanteTV,separadorTV,fechaTV;
         private ImageView escudoEquipoLocalIV,escudoEquipoVisitanteIV;
+        private LinearLayout marcadorLL;
 
         public PartidoViewHolder(View itemView) {
             super(itemView);
@@ -134,6 +150,7 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
             nombreEquipoVisitanteTV=(TextView)itemView.findViewById(R.id.nombreEquipoVisitanteTV);
             separadorTV=(TextView)itemView.findViewById(R.id.separadorTV);
             fechaTV=(TextView)itemView.findViewById(R.id.fechaTV);
+            marcadorLL=(LinearLayout)itemView.findViewById(R.id.marcadorLL);
         }
 
         public void setNombreEquipoLocalTV(String equipoLocalTV) {
