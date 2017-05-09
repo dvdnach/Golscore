@@ -29,6 +29,8 @@ public class GrupoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_categoria);
         final String idCategoria=getIntent().getExtras().getString("idCategoria");
+        final String nombreCategoria=getIntent().getExtras().getString("nombreCategoria");
+        setTitle(nombreCategoria);
 
         subcategoriaRV=(RecyclerView) findViewById(R.id.subcategoriaRV);
         subcategoriaRV.setLayoutManager(new LinearLayoutManager(this));

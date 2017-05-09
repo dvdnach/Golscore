@@ -22,6 +22,47 @@
             android:layout_height="wrap_content"/>
     </FrameLayout>
 
+    <LinearLayout
+        android:id="@+id/partidosFL"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <android.support.design.widget.TabLayout
+            android:id="@+id/partidosJornadasTL"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/image_45dp"
+            android:background="@color/colorPrimary"
+            app:tabTextColor="@color/colorWhiteDark"
+            app:tabSelectedTextColor="@color/colorWhite"
+            app:tabIndicatorColor="@color/colorWhite">
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/partidosRV"
+            android:scrollbars="vertical"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/clasificacionFL"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/clasificacionRV"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"

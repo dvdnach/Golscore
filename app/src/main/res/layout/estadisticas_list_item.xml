@@ -2,8 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/margin_2dp"
-    android:paddingBottom="@dimen/margin_2dp"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
@@ -16,23 +14,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:clickable="true"
-            android:background="@drawable/background_equipos">
-            <ImageView
-                android:id="@+id/escudoEquipoIV"
-                android:layout_width="@dimen/image_45dp"
-                android:layout_height="@dimen/image_45dp"
-                android:padding="@dimen/margin_5dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_equipos"/>
+            android:background="@color/colorWhite">
             <TextView
-                android:id="@+id/nombreEquipoTV"
-                android:layout_width="match_parent"
+                android:id="@+id/nombreJugadorTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_10dp"
+                android:layout_marginLeft="@dimen/margin_10dp"/>
+            <TextView
+                android:id="@+id/golesJugadorTV"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/margin_10dp"
                 android:layout_marginLeft="@dimen/margin_10dp"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
+
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
