@@ -69,9 +69,17 @@ public class LigaActivity extends AppCompatActivity {
     };
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liga);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         clubFL=(FrameLayout)findViewById(R.id.clubFL);
         partidosFL=(LinearLayout)findViewById(R.id.partidosFL);
