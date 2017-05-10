@@ -1,5 +1,6 @@
 package com.example.dm2.golscore.Fragment;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 
 import com.example.dm2.golscore.Clases.Club;
 import com.example.dm2.golscore.Clases.Equipo;
+import com.example.dm2.golscore.LocalizacionEstadio;
+import com.example.dm2.golscore.MainActivity;
 import com.example.dm2.golscore.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,14 +43,18 @@ public class InfoFragment extends Fragment {
         nombreEquipoTV=(TextView)getView().findViewById(R.id.nombreEquipoTV);
         nombreEstadioTV=(TextView) getView().findViewById(R.id.nombreEstadioTV);
         estadioLL=(LinearLayout)getView().findViewById(R.id.estadioLL);
+        final String idEquipo=getActivity().getIntent().getExtras().getString("idEquipo");
         estadioLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Ir a localización", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(new Intent(getActivity(),LocalizacionEstadio.class));
+               // intent.putExtra("Equipo",idEquipo);
+                intent.putExtra("Equipo",idEquipo);
+                startActivity(intent);
             }
         });
 
-        final String idEquipo=getActivity().getIntent().getExtras().getString("idEquipo");
+        //final String idEquipo=getActivity().getIntent().getExtras().getString("idEquipo");
 
         FirebaseDatabase dbEquipo=FirebaseDatabase.getInstance();
         dbEquipo.getReference().child("Equipo").addValueEventListener(new ValueEventListener() {

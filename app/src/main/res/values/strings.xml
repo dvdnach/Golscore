@@ -12,9 +12,11 @@
     <string name="title_stadium">ESTADIO</string>
     <string name="title_dato_equipo">DATO DEL EQUIPO</string>
     <string name="title_localizacion">LOCALIZACIÓN</string>
-    <string name="title_max_goleadores">MÁXIMOS GOLEADORES</string>
+    <string name="title_goles">GOLES</string>
+    <string name="title_tarjetas">TARJETAS</string>
+    <string name="title_cambios">CAMBIOS</string>
     <string name="text_jugadores">Jugadores</string>
-    <string name="text_goles">Goles</string>
+    <string name="text_goles">GOLES</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

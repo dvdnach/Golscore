@@ -7,12 +7,14 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- Dimensiones para los margenes y padinng -->
+    <dimen name="margin_1dp">1dp</dimen>
     <dimen name="margin_2dp">2dp</dimen>
     <dimen name="margin_5dp">5dp</dimen>
     <dimen name="margin_8dp">8dp</dimen>
     <dimen name="margin_10dp">10dp</dimen>
 
     <!-- tamaño imágenes -->
+    <dimen name="image_30dp">30dp</dimen>
     <dimen name="image_40dp">40dp</dimen>
     <dimen name="image_45dp">45dp</dimen>
     <dimen name="image_50dp">50dp</dimen>
@@ -21,4 +23,5 @@
     <dimen name="text_8sp">8sp</dimen>
     <dimen name="text_12sp">12sp</dimen>
     <dimen name="text_15sp">15sp</dimen>
+    <dimen name="text_30sp">30sp</dimen>
 </resources>

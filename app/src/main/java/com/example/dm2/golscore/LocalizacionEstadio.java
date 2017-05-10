@@ -1,5 +1,6 @@
 package com.example.dm2.golscore;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -29,7 +30,7 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
     private Button animar,posInicial;
     private DatabaseReference db;
     private Estadio est;
-    private String equipo;
+    private String idequipo;
     private Button btnVista;
 
     @Override
@@ -42,8 +43,7 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
         //recibimos el equipo
         Bundle bundle = getIntent().getExtras();
 
-        //ejemplo equipo
-        equipo="S.D Alsasua";
+        idequipo=bundle.getString("Equipo");
        // equipo=bundle.getString("Equipo");
 
         MapFragment mapFragment=(MapFragment)getFragmentManager().findFragmentById(R.id.map);
@@ -98,7 +98,7 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
     }
 
     private void coordenadas() {
-        db.child("Estadio_Loc").addListenerForSingleValueEvent(new ValueEventListener() {
+        db.child("Club").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get user value
@@ -108,12 +108,12 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
                     // Equipo e=child.getValue(Equipo.class);
-                    if(child.child("Equipo").getValue().toString().equals(equipo))
+                    if(child.child("id").getValue().toString().equals(idequipo))
                     {
-                        double lat= Double.parseDouble(child.child("Latitud").getValue().toString());
-                        double lon=Double.parseDouble(child.child("Longitud").getValue().toString());
+                        double lat= Double.parseDouble(child.child("latitud").getValue().toString());
+                        double lon=Double.parseDouble(child.child("longitud").getValue().toString());
                         LatLng campo=new LatLng(lat,lon);
-                        mapa.addMarker(new MarkerOptions().position(campo).title(equipo));
+                        mapa.addMarker(new MarkerOptions().position(campo).title(child.child("campo").toString()));
                         mapa.moveCamera(CameraUpdateFactory.newLatLng(campo));
                         animarCampo(campo);
                         break;

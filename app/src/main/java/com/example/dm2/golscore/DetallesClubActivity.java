@@ -17,6 +17,7 @@ public class DetallesClubActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles_club);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nombreEquipo=getIntent().getExtras().getString("nombreEquipo");
         String idEquipo=getIntent().getExtras().getString("idEquipo");
@@ -46,5 +47,11 @@ public class DetallesClubActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 }

@@ -2,36 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/margin_2dp"
-    android:paddingBottom="@dimen/margin_2dp"
+    android:paddingTop="@dimen/margin_1dp"
+    android:paddingBottom="@dimen/margin_1dp"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardCategoriaCV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <LinearLayout
+            android:id="@+id/goleadorLocalLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:clickable="true"
-            android:background="@drawable/background_equipos">
-            <ImageView
-                android:layout_width="@dimen/image_45dp"
-                android:layout_height="@dimen/image_45dp"
-                android:padding="@dimen/margin_5dp"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_equipos"/>
-            <TextView
-                android:id="@+id/nombreClubTV"
-                android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="@dimen/margin_10dp"
-                android:layout_marginLeft="@dimen/margin_10dp"/>
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:background="@drawable/background_equipos">
+                <ImageView
+                    android:layout_width="@dimen/image_30dp"
+                    android:layout_height="@dimen/image_30dp"
+                    android:padding="@dimen/margin_5dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/balon"/>
+                <TextView
+                    android:id="@+id/goleadorLocalTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:layout_marginLeft="@dimen/margin_10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/goleadorVisitanteLL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:background="@drawable/background_equipos">
+                <TextView
+                    android:id="@+id/goleadorVisitanteTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical" />
+                <ImageView
+                    android:layout_width="@dimen/image_30dp"
+                    android:layout_height="@dimen/image_30dp"
+                    android:padding="@dimen/margin_5dp"
+                    android:layout_marginStart="@dimen/margin_10dp"
+                    android:layout_marginLeft="@dimen/margin_10dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/balon"/>
+            </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
-
 </LinearLayout>

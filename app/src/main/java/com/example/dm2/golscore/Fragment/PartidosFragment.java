@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.dm2.golscore.Adapter.PartidoAdapter;
 import com.example.dm2.golscore.Clases.Partido;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PartidosFragment extends Fragment {
+
     private RecyclerView partidosEquipoRV;
     private List<Partido> listaPartido;
     private PartidoAdapter adapter;

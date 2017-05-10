@@ -28,6 +28,7 @@ public class GrupoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_categoria);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final String idCategoria=getIntent().getExtras().getString("idCategoria");
         final String nombreCategoria=getIntent().getExtras().getString("nombreCategoria");
         setTitle(nombreCategoria);
@@ -58,5 +59,11 @@ public class GrupoActivity extends AppCompatActivity {
                 Log.e("DATABASSE ERROR",databaseError.getMessage());
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 }
