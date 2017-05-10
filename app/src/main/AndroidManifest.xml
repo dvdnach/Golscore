@@ -13,16 +13,14 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
+            android:value="@integer/google_play_services_version"
+            />
         <uses-feature
             android:glEsVersion="0x00020000"
-            android:required="true" />
-
+            android:required="true"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAUsfxRITGQwt4zruBDyWlby8Ng3_WmC6Q" />
-
+            android:value="AIzaSyAUsfxRITGQwt4zruBDyWlby8Ng3_WmC6Q"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -37,13 +35,14 @@
         <activity
             android:name=".LigaActivity"
             android:label="@string/title_activity_liga" />
-        <activity android:name=".DetallesClubActivity" />
+        <activity android:name=".DetallesClubActivity"></activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".PantallaAfterLogin" />
         <activity android:name=".ResetearPassword" />
         <activity android:name=".LocalizacionEstadio" />
+        <activity android:name=".PruebaImagen"></activity>
         <activity android:name=".DetallesPartidosActivity"></activity>
     </application>
 

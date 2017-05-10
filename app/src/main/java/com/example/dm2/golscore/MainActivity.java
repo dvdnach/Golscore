@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_gallery) {
             startActivity(new Intent(MainActivity.this,LocalizacionEstadio.class));
         } else if (id == R.id.nav_slideshow) {
-
+            startActivity(new Intent(MainActivity.this,PruebaImagen.class));
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
