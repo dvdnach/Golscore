@@ -7,12 +7,11 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardCategoriaCV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
         <LinearLayout
-            android:id="@+id/tajetaLocalLL"
+            android:id="@+id/tarjetaLocalLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -23,13 +22,14 @@
                 android:orientation="horizontal"
                 android:background="@drawable/background_equipos">
                 <ImageView
-                    android:layout_width="@dimen/image_45dp"
-                    android:layout_height="@dimen/image_45dp"
+                    android:id="@+id/tarjetaLocalIV"
+                    android:layout_width="@dimen/image_30dp"
+                    android:layout_height="@dimen/image_30dp"
                     android:padding="@dimen/margin_5dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/amarilla"/>
                 <TextView
-                    android:id="@+id/tajetaLocalTV"
+                    android:id="@+id/tarjetaLocalTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -37,7 +37,7 @@
                     android:layout_marginLeft="@dimen/margin_10dp"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/tajetaVisitanteLL"
+                android:id="@+id/tarjetaVisitanteLL"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -50,8 +50,9 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical" />
                 <ImageView
-                    android:layout_width="@dimen/image_45dp"
-                    android:layout_height="@dimen/image_45dp"
+                    android:id="@+id/tarjetaVisitanteIV"
+                    android:layout_width="@dimen/image_30dp"
+                    android:layout_height="@dimen/image_30dp"
                     android:padding="@dimen/margin_5dp"
                     android:layout_marginStart="@dimen/margin_10dp"
                     android:layout_marginLeft="@dimen/margin_10dp"

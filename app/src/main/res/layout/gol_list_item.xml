@@ -7,7 +7,6 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardCategoriaCV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
@@ -24,8 +23,8 @@
                 android:orientation="horizontal"
                 android:background="@drawable/background_equipos">
                 <ImageView
-                    android:layout_width="@dimen/image_45dp"
-                    android:layout_height="@dimen/image_45dp"
+                    android:layout_width="@dimen/image_30dp"
+                    android:layout_height="@dimen/image_30dp"
                     android:padding="@dimen/margin_5dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/balon"/>
@@ -51,8 +50,8 @@
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical" />
                 <ImageView
-                    android:layout_width="@dimen/image_45dp"
-                    android:layout_height="@dimen/image_45dp"
+                    android:layout_width="@dimen/image_30dp"
+                    android:layout_height="@dimen/image_30dp"
                     android:padding="@dimen/margin_5dp"
                     android:layout_marginStart="@dimen/margin_10dp"
                     android:layout_marginLeft="@dimen/margin_10dp"
