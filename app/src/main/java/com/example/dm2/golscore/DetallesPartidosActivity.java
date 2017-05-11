@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dm2.golscore.Adapter.PagerAdapter;
 import com.example.dm2.golscore.Adapter.PagerPartidosAdapter;
 import com.example.dm2.golscore.Clases.Club;
@@ -109,9 +110,11 @@ public class DetallesPartidosActivity extends AppCompatActivity {
                             if(equipo.getId()==idEquipoLocal){
                                 nombreLocalDetallesTV.setText(equipo.getNombre());
                                 idClub=equipo.getId_club();
+                                Glide.with(getApplicationContext()).load(equipo.getEscudo()).into(escudoLocalDetallesIV);
                             }
                             if(equipo.getId()==idEquipoVisitante){
                                 nombreVisitanteDetallesTV.setText(equipo.getNombre());
+                                Glide.with(getApplicationContext()).load(equipo.getEscudo()).into(escudoVisitanteDetallesIV);
                             }
                         }
                     }
