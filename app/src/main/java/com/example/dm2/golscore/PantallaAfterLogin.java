@@ -18,6 +18,6 @@ public class PantallaAfterLogin extends AppCompatActivity {
     public void salir(View v)
     {
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(PantallaAfterLogin.this,LoginActivity.class));
+        finish();
     }
 }

@@ -49,8 +49,24 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
     public void onBindViewHolder(final EquipoViewHolder holder, final int position) {
         final Equipo s= listaEquipo.get(position);
         holder.nombreEquipoTV.setText(s.getNombre());
-        conseguirImagen(s.getEscudo());
-        holder.imagen.setImageBitmap(bitmap);
+        //conseguir escudos
+        FirebaseStorage storage= FirebaseStorage.getInstance();
+        StorageReference gsReference = storage.getReferenceFromUrl(s.getEscudo());
+        gsReference.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                // Use the bytes to display the image
+                bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                holder.imagen.setImageBitmap(bitmap);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                // bitmap = BitmapFactory.decodeByteArray(, 0, bytes.length);
+            }
+        });
+
         holder.nombreEquipoTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,12 +97,18 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
                 }
             });
         } catch (IOException e ) {}*/
-        final long ONE_MEGABYTE = 1024 * 1024;
-        gsReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+
+        gsReference.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
-               bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-
+                // Use the bytes to display the image
+                bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+               // bitmap = BitmapFactory.decodeByteArray(, 0, bytes.length);
             }
         });
     }
