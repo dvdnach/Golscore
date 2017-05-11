@@ -69,8 +69,7 @@ public class InfoFragment extends Fragment {
                     Equipo equipo=snapshot.getValue(Equipo.class);
                     if(equipo.getId()==Integer.parseInt(idEquipo)){
                         idClub=equipo.getId_club();
-                        Glide.with(getContext()).load(equipo.getEscudo()).into(escudo);
-                        Log.e("error",equipo.getEscudo()+ "");}
+                        Glide.with(getContext()).load(equipo.getEscudo()).into(escudo);}
                 }
 
                 FirebaseDatabase dbClub=FirebaseDatabase.getInstance();
