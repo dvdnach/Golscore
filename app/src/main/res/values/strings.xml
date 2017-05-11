@@ -10,6 +10,7 @@
     <string name="action_settings">Ajustes</string>
     <string name="title_activity_login">GolScore Login</string>
     <string name="title_stadium">ESTADIO</string>
+    <string name="title_escudo">ESCUDO</string>
     <string name="title_dato_equipo">DATO DEL EQUIPO</string>
     <string name="title_localizacion">LOCALIZACIÓN</string>
     <string name="title_goles">GOLES</string>

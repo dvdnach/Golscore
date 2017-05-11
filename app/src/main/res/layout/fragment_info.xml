@@ -47,6 +47,35 @@
                 android:layout_marginBottom="@dimen/margin_10dp"
                 android:gravity="center"
                 android:textSize="@dimen/text_12sp"
+                android:text="@string/title_escudo"/>
+            <LinearLayout
+                android:id="@+id/escudoLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/background_equipos">
+                <ImageView
+                    android:id="@+id/escudoIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitStart"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/stadium"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:layout_marginBottom="@dimen/margin_10dp"
+                android:gravity="center"
+                android:textSize="@dimen/text_12sp"
                 android:text="@string/title_stadium"/>
             <LinearLayout
                 android:id="@+id/estadioLL"
