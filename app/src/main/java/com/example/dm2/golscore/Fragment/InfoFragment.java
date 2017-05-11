@@ -1,5 +1,6 @@
 package com.example.dm2.golscore.Fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -9,10 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.dm2.golscore.Clases.Club;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.LocalizacionEstadio;
@@ -28,6 +31,7 @@ public class InfoFragment extends Fragment {
     private TextView nombreEquipoTV,nombreEstadioTV;
     private int idClub;
     private LinearLayout estadioLL;
+    private ImageView escudo;
 
     public InfoFragment() {
     }
@@ -43,12 +47,13 @@ public class InfoFragment extends Fragment {
         nombreEquipoTV=(TextView)getView().findViewById(R.id.nombreEquipoTV);
         nombreEstadioTV=(TextView) getView().findViewById(R.id.nombreEstadioTV);
         estadioLL=(LinearLayout)getView().findViewById(R.id.estadioLL);
+        escudo = (ImageView)getView().findViewById(R.id.escudoIV);
+
         final String idEquipo=getActivity().getIntent().getExtras().getString("idEquipo");
         estadioLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(new Intent(getActivity(),LocalizacionEstadio.class));
-               // intent.putExtra("Equipo",idEquipo);
                 intent.putExtra("Equipo",idEquipo);
                 startActivity(intent);
             }
@@ -62,8 +67,10 @@ public class InfoFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Equipo equipo=snapshot.getValue(Equipo.class);
-                    if(equipo.getId()==Integer.parseInt(idEquipo))
+                    if(equipo.getId()==Integer.parseInt(idEquipo)){
                         idClub=equipo.getId_club();
+                        Glide.with(getContext()).load(equipo.getEscudo()).into(escudo);
+                        Log.e("error",equipo.getEscudo()+ "");}
                 }
 
                 FirebaseDatabase dbClub=FirebaseDatabase.getInstance();
