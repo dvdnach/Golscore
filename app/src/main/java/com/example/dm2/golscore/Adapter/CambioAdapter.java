@@ -82,13 +82,13 @@ public class CambioAdapter extends RecyclerView.Adapter<CambioAdapter.CambioView
                         }
                         if(jugar!=null){
                             if(jugar.equalsIgnoreCase("local")){
-                                holder.cambioEntraLocalTV.setText(minuto+"´ - "+nombreJugadorEntra+" "+apellidoJugadorEntra);
-                                holder.cambioSaleLocalTV.setText(minuto+"´ - "+nombreJugadorSale+" "+apellidoJugadorSale);
+                                holder.cambioEntraLocalTV.setText(minuto+"' - "+nombreJugadorEntra+" "+apellidoJugadorEntra);
+                                holder.cambioSaleLocalTV.setText(minuto+"' - "+nombreJugadorSale+" "+apellidoJugadorSale);
                                 holder.cambioVisitanteLL.setVisibility(View.GONE);
                             }
                             if(jugar.equalsIgnoreCase("visitante")){
-                                holder.cambioEntraVisitanteTV.setText(minuto+"´ - "+nombreJugadorEntra+" "+apellidoJugadorEntra);
-                                holder.cambioSaleVisitanteTV.setText(minuto+"´ - "+nombreJugadorSale+" "+apellidoJugadorSale);
+                                holder.cambioEntraVisitanteTV.setText(minuto+"' - "+nombreJugadorEntra+" "+apellidoJugadorEntra);
+                                holder.cambioSaleVisitanteTV.setText(minuto+"' - "+nombreJugadorSale+" "+apellidoJugadorSale);
                                 holder.cambioLocalLL.setVisibility(View.GONE);
                             }
                         }
