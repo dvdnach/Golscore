@@ -1,5 +1,6 @@
 package com.example.dm2.golscore.Adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Gol;
 import com.example.dm2.golscore.Clases.Partido;
@@ -38,12 +40,15 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
     private Calendar hoy;
     int color,colorVerde;
     Drawable backVerder;
+    Context context;
+
     public PartidoAdapter(List<Partido> listaPartido) {
         this.listaPartido = listaPartido;
     }
 
     @Override
     public PartidoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        context = parent.getContext();
         color=parent.getResources().getColor(R.color.colorRed);
         colorVerde=parent.getResources().getColor(R.color.colorVerde);
         backVerder=parent.getResources().getDrawable(R.drawable.background_resultado_directo);
@@ -65,6 +70,7 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
                     Equipo equipo=snapshot.getValue(Equipo.class);
                     if(equipo.getId()==partido.getEq_local()){
                         holder.nombreEquipoLocalTV.setText(equipo.getNombre());
+                        Glide.with(context).load(equipo.getEscudo()).into(holder.escudoEquipoLocalIV);
                     }
                 }
             }
@@ -81,6 +87,7 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
                     Equipo equipo=snapshot.getValue(Equipo.class);
                     if(equipo.getId()==partido.getEq_visitante()){
                         holder.nombreEquipoVisitanteTV.setText(equipo.getNombre());
+                        Glide.with(context).load(equipo.getEscudo()).into(holder.escudoEquipoVisitanteIV);
                     }
                 }
             }

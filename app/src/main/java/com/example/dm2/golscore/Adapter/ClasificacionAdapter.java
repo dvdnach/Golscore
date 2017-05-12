@@ -3,52 +3,48 @@ package com.example.dm2.golscore.Adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.DetallesClubActivity;
-import com.example.dm2.golscore.LigaActivity;
 import com.example.dm2.golscore.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
-public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoViewHolder> {
+public class ClasificacionAdapter extends RecyclerView.Adapter<ClasificacionAdapter.ClasificacionViewHolder> {
 
-    private List<Equipo> listaEquipo;
+    private List<Equipo> listaClasificacion;
     private Bitmap bitmap;
 
-    public EquipoAdapter(List<Equipo> listaEquipo) {
-        this.listaEquipo = listaEquipo;
+    public ClasificacionAdapter(List<Equipo> listaClasificacion) {
+        this.listaClasificacion = listaClasificacion;
     }
 
     @Override
-    public EquipoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.equipo_list_item,parent,false);
-        EquipoViewHolder holder=new EquipoViewHolder(view);
+    public ClasificacionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.clasificacion_list_item,parent,false);
+        ClasificacionViewHolder holder=new ClasificacionViewHolder(view);
         return  holder;
     }
 
     @Override
-    public void onBindViewHolder(final EquipoViewHolder holder, final int position) {
-        final Equipo s= listaEquipo.get(position);
+    public void onBindViewHolder(final ClasificacionViewHolder holder, final int position) {
+        final Equipo s= listaClasificacion.get(position);
+        holder.posicionEquipoTV.setText(Integer.toString(listaClasificacion.size()-position));
         holder.nombreEquipoTV.setText(s.getNombre());
+        holder.golesEquipoTV.setText(Integer.toString(s.getTotal_goles()));
+        holder.puntosEquipoTV.setText(Integer.toString(s.getPuntos()));
         //conseguir escudos
         FirebaseStorage storage= FirebaseStorage.getInstance();
         StorageReference gsReference = storage.getReferenceFromUrl(s.getEscudo());
@@ -66,36 +62,40 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
                 // bitmap = BitmapFactory.decodeByteArray(, 0, bytes.length);
             }
         });
-
-        holder.nombreEquipoTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DetallesClubActivity.class);
-                intent.putExtra("nombreEquipo",String.valueOf(s.getNombre()));
-                intent.putExtra("idEquipo",String.valueOf(s.getId()));
-                intent.putExtra("idGrupo",String.valueOf(s.getGrupo()));
-                v.getContext().startActivity(intent);
-            }
-        });
     }
 
     @Override
     public int getItemCount() {
-        return listaEquipo.size();
+        return listaClasificacion.size();
     }
 
-    public static class EquipoViewHolder extends RecyclerView.ViewHolder{
+    public static class ClasificacionViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView nombreEquipoTV;
+        private TextView nombreEquipoTV, golesEquipoTV, puntosEquipoTV, posicionEquipoTV;
         private ImageView imagen;
 
-        public EquipoViewHolder(View itemView) {
+        public ClasificacionViewHolder(View itemView) {
             super(itemView);
             nombreEquipoTV = (TextView) itemView.findViewById(R.id.nombreEquipoTV);
             imagen=(ImageView) itemView.findViewById(R.id.escudoEquipoIV);
+            golesEquipoTV = (TextView) itemView.findViewById(R.id.golesEquipoTV);
+            puntosEquipoTV = (TextView) itemView.findViewById(R.id.puntosEquipoTV);
+            posicionEquipoTV=(TextView) itemView.findViewById(R.id.posicionEquipoTV);
+
         }
         public void setNombre(String nombre) {
             nombreEquipoTV.setText(nombre);
+        }
+
+        public void setGolesEquipoTV(String goles) {
+            golesEquipoTV.setText(goles);
+        }
+
+        public void setPuntosEquipoTV(int puntos) {
+            puntosEquipoTV.setText(Integer.toString(puntos));
+        }
+        public void setPosicionEquipoTV(int posicion) {
+            posicionEquipoTV.setText(Integer.toString(posicion));
         }
     }
 }
