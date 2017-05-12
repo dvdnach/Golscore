@@ -47,6 +47,7 @@ public class ClasificacionFragment extends Fragment {
         clasificacionEquipoRV=(RecyclerView)getView().findViewById(R.id.clasificacionEquipoRV);
         LinearLayoutManager llm=new LinearLayoutManager(getContext());
         llm.setReverseLayout(true);
+        llm.setStackFromEnd(true);
         clasificacionEquipoRV.setLayoutManager(llm);
 
         listaClasificacion=new ArrayList<Equipo>();
