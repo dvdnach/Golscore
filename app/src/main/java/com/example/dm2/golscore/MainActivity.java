@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             })
             .show();
+
         }
     }
 
@@ -103,7 +104,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         Intent intent;
 
-        if (id == R.id.nav_location) {
+        if (id == R.id.nav_camera) {
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+        } if (id == R.id.nav_location) {
             intent=new Intent(MainActivity.this,LocalizacionEstadio.class);
             startActivity(intent);
         } else if (id == R.id.nav_primera) {
@@ -116,13 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("nombreCategoria","Preferente");
             intent.putExtra("idCategoria","2");
             startActivity(intent);
-        } /*else if (id == R.id.nav_preferente) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }*/
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
