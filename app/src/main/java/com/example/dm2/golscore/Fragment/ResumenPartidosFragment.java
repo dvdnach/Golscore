@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.dm2.golscore.Adapter.CambioAdapter;
 import com.example.dm2.golscore.Adapter.EquipoAdapter;
 import com.example.dm2.golscore.Adapter.GolAdapter;
 import com.example.dm2.golscore.Adapter.TarjetaAdapter;
+import com.example.dm2.golscore.Clases.Cambio;
 import com.example.dm2.golscore.Clases.Categoria;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Gol;
@@ -31,11 +33,13 @@ import java.util.List;
 
 public class ResumenPartidosFragment extends Fragment {
 
-    private RecyclerView golesRV,tarjetasRV;
+    private RecyclerView golesRV,tarjetasRV,cambiosRV;
     private List<Gol> listaGoles;
     private List<Tarjeta> listaTarjetas;
+    private List<Cambio> listaCambios;
     private GolAdapter golAdapter;
     private TarjetaAdapter tarjetaAdapter;
+    private CambioAdapter cambioAdapter;
     private String idPartido;
     private TextView titleGoles,titleTarjetas,titleCambios;
 
@@ -53,6 +57,7 @@ public class ResumenPartidosFragment extends Fragment {
 
         golesRV=(RecyclerView) getActivity().findViewById(R.id.golesRV);
         tarjetasRV=(RecyclerView) getActivity().findViewById(R.id.tarjetasRV);
+        cambiosRV=(RecyclerView) getActivity().findViewById(R.id.cambiosRV);
         titleGoles=(TextView) getActivity().findViewById(R.id.titleGoles);
         titleTarjetas=(TextView) getActivity().findViewById(R.id.titleTarjetas);
         titleCambios=(TextView) getActivity().findViewById(R.id.titleCambios);
@@ -62,6 +67,8 @@ public class ResumenPartidosFragment extends Fragment {
         sacarGoles();
 
         sacarTarjetas();
+
+        sacarCambios();
 
     }
 
@@ -121,6 +128,39 @@ public class ResumenPartidosFragment extends Fragment {
 
                 if (listaTarjetas.size()==0){
                     titleTarjetas.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("DATABASSE ERROR",databaseError.getMessage());
+            }
+        });
+    }
+
+    public void sacarCambios(){
+        DatabaseReference dbClub= FirebaseDatabase.getInstance().getReference().child("Cambio");
+
+        listaCambios=new ArrayList<Cambio>();
+
+        cambiosRV.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        cambioAdapter= new CambioAdapter(listaCambios);
+
+        cambiosRV.setAdapter(cambioAdapter);
+
+        dbClub.orderByChild("minuto").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listaCambios.removeAll(listaCambios);
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Cambio cambio=snapshot.getValue(Cambio.class);
+                    if(cambio.getId_partido()==Integer.parseInt(idPartido))
+                        listaCambios.add(cambio);
+                }
+                golAdapter.notifyDataSetChanged();
+
+                if (listaCambios.size()==0){
+                    titleCambios.setVisibility(View.GONE);
                 }
             }
 

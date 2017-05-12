@@ -78,11 +78,11 @@ public class GolAdapter extends RecyclerView.Adapter<GolAdapter.GolViewHolder> {
                         }
                         if(jugar!=null){
                             if(jugar.equalsIgnoreCase("local")){
-                                holder.goleadorLocalTV.setText(minuto+"´ - "+nombreJugador+" "+apellidoJugador);
+                                holder.goleadorLocalTV.setText(minuto+"' - "+nombreJugador+" "+apellidoJugador);
                                 holder.goleadorVisitanteLL.setVisibility(View.GONE);
                             }
                             if(jugar.equalsIgnoreCase("visitante")){
-                                holder.goleadorVisitanteTV.setText(minuto+"´ "+nombreJugador+" "+apellidoJugador);
+                                holder.goleadorVisitanteTV.setText(minuto+"' "+nombreJugador+" "+apellidoJugador);
                                 holder.goleadorLocalLL.setVisibility(View.GONE);
                             }
                         }

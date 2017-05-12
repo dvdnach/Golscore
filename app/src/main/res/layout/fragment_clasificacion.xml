@@ -4,11 +4,50 @@
     android:layout_height="match_parent"
     tools:context="com.example.dm2.golscore.Fragment.ClasificacionFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Clasificación Fragment"/>
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="100px">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/posicionTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_5dp"
+                android:text="Posicion"/>
+            <TextView
+                android:id="@+id/equipoTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/image_30dp"
+                android:layout_marginRight="@dimen/image_30dp"
+                android:text="Equipo"/>
+            <TextView
+                android:id="@+id/golesTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/image_30dp"
+                android:layout_marginRight="@dimen/image_30dp"
+                android:text="Goles"/>
+            <TextView
+                android:id="@+id/puntosTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/image_50dp"
+                android:text="Puntos"/>
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/clasificacionEquipoRV"
+        android:scrollbars="none"
+        android:animateLayoutChanges="false"
+        android:layout_below="@+id/cabecera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

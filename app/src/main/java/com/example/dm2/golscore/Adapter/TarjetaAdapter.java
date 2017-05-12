@@ -84,7 +84,7 @@ public class TarjetaAdapter extends RecyclerView.Adapter<TarjetaAdapter.TarjetaV
                         }
                         if(jugar!=null){
                             if(jugar.equalsIgnoreCase("local")){
-                                holder.tarjetaLocalTV.setText(minuto+"´ - "+nombreJugador+" "+apellidoJugador);
+                                holder.tarjetaLocalTV.setText(minuto+"' - "+nombreJugador+" "+apellidoJugador);
                                 holder.tarjetaVisitanteIV.setVisibility(View.GONE);
                                 if(color.equalsIgnoreCase("Amarilla")){
                                     holder.tarjetaLocalIV.setImageBitmap(btmAmarilla);
@@ -93,7 +93,7 @@ public class TarjetaAdapter extends RecyclerView.Adapter<TarjetaAdapter.TarjetaV
                                 }
                             }
                             if(jugar.equalsIgnoreCase("visitante")){
-                                holder.tarjetaVisitanteTV.setText(minuto+"´ "+nombreJugador+" "+apellidoJugador);
+                                holder.tarjetaVisitanteTV.setText(minuto+"' "+nombreJugador+" "+apellidoJugador);
                                 holder.tajetaLocalLL.setVisibility(View.GONE);
                                 if(color.equalsIgnoreCase("Amarilla")){
                                     holder.tarjetaLocalIV.setImageBitmap(btmAmarilla);

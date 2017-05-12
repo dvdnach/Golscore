@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,10 +15,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.dm2.golscore.Clases.Equipo;
-import com.example.dm2.golscore.Clases.Gol;
 import com.example.dm2.golscore.Clases.Partido;
 import com.example.dm2.golscore.DetallesPartidosActivity;
-import com.example.dm2.golscore.LigaActivity;
 import com.example.dm2.golscore.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,12 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoViewHolder> {
+public class PartidoAdminAdapter extends RecyclerView.Adapter<PartidoAdminAdapter.PartidoViewHolder> {
 
     private List<Partido> listaPartido;
     private Calendar hoy;
@@ -42,7 +38,7 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
     Drawable backVerder;
     Context context;
 
-    public PartidoAdapter(List<Partido> listaPartido) {
+    public PartidoAdminAdapter(List<Partido> listaPartido) {
         this.listaPartido = listaPartido;
     }
 
@@ -60,8 +56,6 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
     @Override
     public void onBindViewHolder(final PartidoViewHolder holder, final int position) {
         final Partido partido= listaPartido.get(position);
-        hoy=Calendar.getInstance();
-        Date dateHoy=hoy.getTime();
         DatabaseReference dbClub= FirebaseDatabase.getInstance().getReference().child("Equipo");
         dbClub.addValueEventListener(new ValueEventListener() {
             @Override
@@ -97,34 +91,12 @@ public class PartidoAdapter extends RecyclerView.Adapter<PartidoAdapter.PartidoV
                 Log.e("DATABASSE ERROR",databaseError.getMessage());
             }
         });
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        String stringFechaPartido = partido.getFecha()+" "+partido.getHora();
-        try {
-            Date datePartido = sdf.parse(stringFechaPartido);
-            Calendar calPartidoFin = Calendar.getInstance();
-            calPartidoFin.setTime(datePartido);
-            calPartidoFin.add(Calendar.HOUR, 2);
-            Date datePartidoFin = calPartidoFin.getTime();
-            if (dateHoy.before(datePartidoFin) && dateHoy.after(datePartido)) {
-                holder.fechaTV.setText("EN JUEGO");
-                holder.fechaTV.setTextColor(colorVerde);
-                holder.marcadorLL.setBackground(backVerder);
-                holder.golesLocalTV.setText(Integer.toString(partido.getGol_local()));
-                holder.golesVisitanteTV.setText(Integer.toString(partido.getGol_visitante()));
-            } else if (dateHoy.after(datePartido)) {
-                holder.fechaTV.setText("FINALIZADO");
-                holder.fechaTV.setTextColor(color);
-                holder.golesLocalTV.setText(Integer.toString(partido.getGol_local()));
-                holder.golesVisitanteTV.setText(Integer.toString(partido.getGol_visitante()));
-            }  else{
-                holder.golesLocalTV.setText(partido.getHora());
-                holder.separadorTV.setText("");
-                holder.fechaTV.setText(partido.getFecha());
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        holder.fechaTV.setText("EN JUEGO");
+        holder.fechaTV.setTextColor(colorVerde);
+        holder.marcadorLL.setBackground(backVerder);
+        holder.golesLocalTV.setText(Integer.toString(partido.getGol_local()));
+        holder.golesVisitanteTV.setText(Integer.toString(partido.getGol_visitante()));
+        
         holder.cardPartidoCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
