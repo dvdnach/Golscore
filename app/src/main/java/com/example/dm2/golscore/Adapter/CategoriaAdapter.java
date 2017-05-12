@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dm2.golscore.Clases.Categoria;
@@ -34,7 +35,7 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
     public void onBindViewHolder(final CategoriaViewHolder holder, final int position) {
         final Categoria s= listaCategoria.get(position);
         holder.nombreCategoriaTV.setText(s.getNombre());
-        holder.cardCategoriaCV.setOnClickListener(new View.OnClickListener() {
+        holder.categoriaLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), GrupoActivity.class);
@@ -53,12 +54,12 @@ public class CategoriaAdapter extends RecyclerView.Adapter<CategoriaAdapter.Cate
     public static class CategoriaViewHolder extends RecyclerView.ViewHolder{
 
         private TextView nombreCategoriaTV;
-        private CardView cardCategoriaCV;
+        private LinearLayout categoriaLL;
 
         public CategoriaViewHolder(View itemView) {
             super(itemView);
             nombreCategoriaTV = (TextView) itemView.findViewById(R.id.nombreCategoriaTV);
-            cardCategoriaCV=(CardView) itemView.findViewById(R.id.cardCategoriaCV);
+            categoriaLL=(LinearLayout) itemView.findViewById(R.id.categoriaLL);
         }
 
         public void setNombre(String nombre) {
