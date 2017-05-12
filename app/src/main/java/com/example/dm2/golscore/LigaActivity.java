@@ -31,8 +31,8 @@ import java.util.List;
 
 public class LigaActivity extends AppCompatActivity {
 
-    private FrameLayout clubFL,clasificacionFL;
-    private LinearLayout partidosFL;
+    private FrameLayout clubFL;
+    private LinearLayout partidosFL,clasificacionFL;
     private String nombreGrupo,idGrupo;
     private RecyclerView clubRV,partidosRV, clasificacionRV;
     private List<Equipo> listaEquipo;
@@ -87,7 +87,7 @@ public class LigaActivity extends AppCompatActivity {
 
         clubFL=(FrameLayout)findViewById(R.id.clubFL);
         partidosFL=(LinearLayout)findViewById(R.id.partidosFL);
-        clasificacionFL=(FrameLayout)findViewById(R.id.clasificacionFL);
+        clasificacionFL=(LinearLayout) findViewById(R.id.clasificacionFL);
         nombreGrupo=getIntent().getExtras().getString("nombreGrupo");
         idGrupo=getIntent().getExtras().getString("idGrupo");
 
@@ -188,10 +188,13 @@ public class LigaActivity extends AppCompatActivity {
         DatabaseReference dbClub=FirebaseDatabase.getInstance().getReference().child("Equipo");
 
         clasificacionRV=(RecyclerView) findViewById(R.id.clasificacionRV);
-        clasificacionRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        LinearLayoutManager llm=new LinearLayoutManager(getApplicationContext());
+        llm.setReverseLayout(true);
+        llm.setStackFromEnd(true);
+        clasificacionRV.setLayoutManager(llm);
 
         listaClasificacion=new ArrayList<Equipo>();
-        adapterClasificacion= new ClasificacionAdapter(listaClasificacion, this.getApplicationContext());
+        adapterClasificacion= new ClasificacionAdapter(listaClasificacion,this.getBaseContext());
 
         clasificacionRV.setAdapter(adapterClasificacion);
 
@@ -205,7 +208,7 @@ public class LigaActivity extends AppCompatActivity {
                         listaClasificacion.add(equipo);
                     }
                 }
-                adapterPartido.notifyDataSetChanged();
+                adapterClasificacion.notifyDataSetChanged();
             }
 
             @Override

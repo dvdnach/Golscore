@@ -47,20 +47,56 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/clasificacionFL"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:layout_weight="1"
+        android:orientation="vertical"
         android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/cabecera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_cabecera">
+            <TextView
+                android:id="@+id/posicionTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_8dp"
+                android:textColor="@color/colorWhite"
+                android:text="Ps."/>
+            <TextView
+                android:id="@+id/equipoTXT"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:text="Equipo"/>
+            <TextView
+                android:id="@+id/golesTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:textColor="@color/colorWhite"
+                android:text="Gol."/>
+            <TextView
+                android:id="@+id/puntosTXT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:textColor="@color/colorWhite"
+                android:text="Pts."/>
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/clasificacionRV"
             android:scrollbars="none"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </FrameLayout>
+    </LinearLayout>
 
 
     <android.support.design.widget.BottomNavigationView

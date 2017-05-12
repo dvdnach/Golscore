@@ -45,6 +45,7 @@ public class ClasificacionAdapter extends RecyclerView.Adapter<ClasificacionAdap
     @Override
     public void onBindViewHolder(final ClasificacionViewHolder holder, final int position) {
         final Equipo s= listaClasificacion.get(position);
+        Log.e("Equipo", s.getNombre());
         holder.posicionEquipoTV.setText(Integer.toString(listaClasificacion.size()-position));
         holder.nombreEquipoTV.setText(s.getNombre());
         holder.golesEquipoTV.setText(Integer.toString(s.getTotal_goles()));
