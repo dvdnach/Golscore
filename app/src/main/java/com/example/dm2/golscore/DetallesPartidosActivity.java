@@ -1,5 +1,6 @@
 package com.example.dm2.golscore;
 
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;

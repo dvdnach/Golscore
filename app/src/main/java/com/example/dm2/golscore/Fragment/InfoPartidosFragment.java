@@ -1,5 +1,6 @@
 package com.example.dm2.golscore.Fragment;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.example.dm2.golscore.Clases.Club;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Partido;
+import com.example.dm2.golscore.LocalizacionEstadio;
 import com.example.dm2.golscore.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,12 +43,6 @@ public class InfoPartidosFragment extends Fragment {
         final String idPartido=getActivity().getIntent().getExtras().getString("idPartido");
         nombreEstadioPartidoTV=(TextView) getActivity().findViewById(R.id.nombreEstadioPartidoTV);
         estadioPartidoLL=(LinearLayout) getActivity().findViewById(R.id.estadioPartidoLL);
-        estadioPartidoLL.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Ir a localización", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         FirebaseDatabase dbPartido=FirebaseDatabase.getInstance();
         dbPartido.getReference().child("Partido").addValueEventListener(new ValueEventListener() {
@@ -91,6 +87,15 @@ public class InfoPartidosFragment extends Fragment {
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         Log.e("DATABASSE ERROR",databaseError.getMessage());
+                    }
+                });
+                Log.e("idEquipo",idEquipoLocal+" ");
+                estadioPartidoLL.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(new Intent(getActivity(),LocalizacionEstadio.class));
+                        intent.putExtra("Equipo",idEquipoLocal);
+                        startActivity(intent);
                     }
                 });
             }
