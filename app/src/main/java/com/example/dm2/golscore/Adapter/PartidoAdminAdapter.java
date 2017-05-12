@@ -96,7 +96,7 @@ public class PartidoAdminAdapter extends RecyclerView.Adapter<PartidoAdminAdapte
         holder.marcadorLL.setBackground(backVerder);
         holder.golesLocalTV.setText(Integer.toString(partido.getGol_local()));
         holder.golesVisitanteTV.setText(Integer.toString(partido.getGol_visitante()));
-        
+
         holder.cardPartidoCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

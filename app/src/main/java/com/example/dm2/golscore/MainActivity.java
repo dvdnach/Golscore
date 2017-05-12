@@ -2,6 +2,7 @@ package com.example.dm2.golscore;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.dm2.golscore.Adapter.CambioAdapter;
 import com.example.dm2.golscore.Adapter.CategoriaAdapter;
@@ -83,7 +85,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            Snackbar.make(getCurrentFocus(), "¿Deseas salir de la aplicación?", Snackbar.LENGTH_LONG)
+            .setAction("Salir", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            })
+            .show();
         }
     }
 
@@ -92,16 +101,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Intent intent;
 
-        if (id == R.id.nav_camera) {
-            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-        } else if (id == R.id.nav_gallery) {
-            startActivity(new Intent(MainActivity.this,LocalizacionEstadio.class));
-        } else if (id == R.id.nav_slideshow) {
-            //startActivity(new Intent(MainActivity.this,PruebaImagen.class));
-        } else if (id == R.id.nav_manage) {
+        if (id == R.id.nav_location) {
+            intent=new Intent(MainActivity.this,LocalizacionEstadio.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_primera) {
+            intent=new Intent(MainActivity.this,GrupoActivity.class);
+            intent.putExtra("nombreCategoria","Primera Autonómica");
+            intent.putExtra("idCategoria","1");
+            startActivity(intent);
+        } else if (id == R.id.nav_preferente) {
+            intent=new Intent(MainActivity.this,GrupoActivity.class);
+            intent.putExtra("nombreCategoria","Preferente");
+            intent.putExtra("idCategoria","2");
+            startActivity(intent);
+        } /*else if (id == R.id.nav_preferente) {
 
-        } /*else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
