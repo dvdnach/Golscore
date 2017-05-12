@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import com.example.dm2.golscore.Adapter.ClasificacionAdapter;
 import com.example.dm2.golscore.Adapter.EquipoAdapter;
 import com.example.dm2.golscore.Adapter.PartidoAdapter;
 import com.example.dm2.golscore.Clases.Equipo;
@@ -33,11 +34,13 @@ public class LigaActivity extends AppCompatActivity {
     private FrameLayout clubFL,clasificacionFL;
     private LinearLayout partidosFL;
     private String nombreGrupo,idGrupo;
-    private RecyclerView clubRV,partidosRV;
+    private RecyclerView clubRV,partidosRV, clasificacionRV;
     private List<Equipo> listaEquipo;
+    private List<Equipo> listaClasificacion;
     private List<Partido> listaPartido;
     private EquipoAdapter adapter;
     private PartidoAdapter adapterPartido;
+    private ClasificacionAdapter adapterClasificacion;
     private TabLayout partidosJornadasTL;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -58,6 +61,7 @@ public class LigaActivity extends AppCompatActivity {
                     clasificacionFL.setVisibility(View.GONE);
                     return true;
                 case R.id.navigation_clasificacion:
+                    obtenerClasificacion();
                     clubFL.setVisibility(View.GONE);
                     partidosFL.setVisibility(View.GONE);
                     clasificacionFL.setVisibility(View.VISIBLE);
@@ -167,6 +171,38 @@ public class LigaActivity extends AppCompatActivity {
                     Partido partido=snapshot.getValue(Partido.class);
                     if(partido.getGrupo()==Integer.parseInt(idGrupo) && partido.getJornada()==(partidosJornadasTL.getSelectedTabPosition()+1)){
                         listaPartido.add(partido);
+                    }
+                }
+                adapterPartido.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("DATABASSE ERROR",databaseError.getMessage());
+            }
+        });
+    }
+
+    public void obtenerClasificacion () {
+        setTitle(nombreGrupo);
+        DatabaseReference dbClub=FirebaseDatabase.getInstance().getReference().child("Equipo");
+
+        clasificacionRV=(RecyclerView) findViewById(R.id.clasificacionRV);
+        clasificacionRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        listaClasificacion=new ArrayList<Equipo>();
+        adapterClasificacion= new ClasificacionAdapter(listaClasificacion);
+
+        clasificacionRV.setAdapter(adapterClasificacion);
+
+        dbClub.orderByChild("puntos").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listaClasificacion.removeAll(listaClasificacion);
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Equipo equipo=snapshot.getValue(Equipo.class);
+                    if(equipo.getGrupo()==Integer.parseInt(idGrupo)){
+                        listaClasificacion.add(equipo);
                     }
                 }
                 adapterPartido.notifyDataSetChanged();
