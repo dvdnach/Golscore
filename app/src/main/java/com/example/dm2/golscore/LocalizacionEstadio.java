@@ -30,7 +30,7 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
     private Button animar,posInicial;
     private DatabaseReference db;
     private Estadio est;
-    private String idequipo;
+    private int idclub;
     private Button btnVista;
 
     @Override
@@ -43,7 +43,8 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
         //recibimos el equipo
         Bundle bundle = getIntent().getExtras();
 
-        idequipo=bundle.getString("Equipo");
+        //club
+        idclub=bundle.getInt("Equipo");
        // equipo=bundle.getString("Equipo");
 
         MapFragment mapFragment=(MapFragment)getFragmentManager().findFragmentById(R.id.map);
@@ -92,7 +93,7 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
                         +cameraPosition.zoom+"orientation"+cameraPosition.bearing+"angulo"+cameraPosition.tilt,Toast.LENGTH_LONG).show();*/
             }
         });
-        vistaActual= GoogleMap.MAP_TYPE_SATELLITE;
+        vistaActual= GoogleMap.MAP_TYPE_NORMAL;
         mapa.setMapType(vistaActual);
         mapa.getUiSettings().setZoomControlsEnabled(true);
     }
@@ -108,12 +109,12 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
 
                     // Equipo e=child.getValue(Equipo.class);
-                    if(child.child("id").getValue().toString().equals(idequipo))
+                    if(child.child("id").getValue().toString().equals(String.valueOf(idclub)))
                     {
                         double lat= Double.parseDouble(child.child("latitud").getValue().toString());
                         double lon=Double.parseDouble(child.child("longitud").getValue().toString());
                         LatLng campo=new LatLng(lat,lon);
-                        mapa.addMarker(new MarkerOptions().position(campo).title(child.child("campo").toString()));
+                        mapa.addMarker(new MarkerOptions().position(campo).title(child.child("campo").getValue().toString()));
                         mapa.moveCamera(CameraUpdateFactory.newLatLng(campo));
                         animarCampo(campo);
                         break;
@@ -143,13 +144,13 @@ public class LocalizacionEstadio extends AppCompatActivity implements OnMapReady
         {
             vistaActual= GoogleMap.MAP_TYPE_NORMAL;
             mapa.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-            btnVista.setText("Vista Satélite");
+            btnVista.setText("Cambiar a Vista Satélite");
         }
         else
         {
             vistaActual= GoogleMap.MAP_TYPE_SATELLITE;
             mapa.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-            btnVista.setText("Vista Mapa");
+            btnVista.setText("Cambiar a Vista Mapa");
         }
 
     }
