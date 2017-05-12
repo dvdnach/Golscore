@@ -1,5 +1,6 @@
 package com.example.dm2.golscore.Adapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.DetallesClubActivity;
 import com.example.dm2.golscore.R;
@@ -26,9 +28,11 @@ public class ClasificacionAdapter extends RecyclerView.Adapter<ClasificacionAdap
 
     private List<Equipo> listaClasificacion;
     private Bitmap bitmap;
+    private Context context;
 
-    public ClasificacionAdapter(List<Equipo> listaClasificacion) {
+    public ClasificacionAdapter(List<Equipo> listaClasificacion, Context context) {
         this.listaClasificacion = listaClasificacion;
+        this.context = context;
     }
 
     @Override
@@ -45,23 +49,7 @@ public class ClasificacionAdapter extends RecyclerView.Adapter<ClasificacionAdap
         holder.nombreEquipoTV.setText(s.getNombre());
         holder.golesEquipoTV.setText(Integer.toString(s.getTotal_goles()));
         holder.puntosEquipoTV.setText(Integer.toString(s.getPuntos()));
-        //conseguir escudos
-        FirebaseStorage storage= FirebaseStorage.getInstance();
-        StorageReference gsReference = storage.getReferenceFromUrl(s.getEscudo());
-        gsReference.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                // Use the bytes to display the image
-                bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                holder.imagen.setImageBitmap(bitmap);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-                // bitmap = BitmapFactory.decodeByteArray(, 0, bytes.length);
-            }
-        });
+        Glide.with(context).load(s.getEscudo()).into(holder.imagen);
     }
 
     @Override

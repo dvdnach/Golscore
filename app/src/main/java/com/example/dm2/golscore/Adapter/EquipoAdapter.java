@@ -1,10 +1,14 @@
 package com.example.dm2.golscore.Adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.DetallesClubActivity;
 import com.example.dm2.golscore.LigaActivity;
@@ -33,9 +38,11 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
 
     private List<Equipo> listaEquipo;
     private Bitmap bitmap;
+    private Context context;
 
-    public EquipoAdapter(List<Equipo> listaEquipo) {
+    public EquipoAdapter(List<Equipo> listaEquipo, Context context) {
         this.listaEquipo = listaEquipo;
+        this.context = context;
     }
 
     @Override
@@ -49,23 +56,7 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
     public void onBindViewHolder(final EquipoViewHolder holder, final int position) {
         final Equipo s= listaEquipo.get(position);
         holder.nombreEquipoTV.setText(s.getNombre());
-        //conseguir escudos
-        FirebaseStorage storage= FirebaseStorage.getInstance();
-        StorageReference gsReference = storage.getReferenceFromUrl(s.getEscudo());
-        gsReference.getBytes(Long.MAX_VALUE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                // Use the bytes to display the image
-                bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                holder.imagen.setImageBitmap(bitmap);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-                // bitmap = BitmapFactory.decodeByteArray(, 0, bytes.length);
-            }
-        });
+        Glide.with(context).load(s.getEscudo()).into(holder.imagen);
 
         holder.nombreEquipoTV.setOnClickListener(new View.OnClickListener() {
             @Override

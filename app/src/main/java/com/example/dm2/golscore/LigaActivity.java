@@ -122,7 +122,7 @@ public class LigaActivity extends AppCompatActivity {
 
         clubRV=(RecyclerView) findViewById(R.id.clubsRV);
         clubRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        adapter= new EquipoAdapter(listaEquipo);
+        adapter= new EquipoAdapter(listaEquipo, this.getApplicationContext());
 
         clubRV.setAdapter(adapter);
 
@@ -191,7 +191,7 @@ public class LigaActivity extends AppCompatActivity {
         clasificacionRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         listaClasificacion=new ArrayList<Equipo>();
-        adapterClasificacion= new ClasificacionAdapter(listaClasificacion);
+        adapterClasificacion= new ClasificacionAdapter(listaClasificacion, this.getApplicationContext());
 
         clasificacionRV.setAdapter(adapterClasificacion);
 
