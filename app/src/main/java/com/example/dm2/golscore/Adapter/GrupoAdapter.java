@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.dm2.golscore.Clases.Grupo;
@@ -34,7 +35,7 @@ public class GrupoAdapter extends RecyclerView.Adapter<GrupoAdapter.GrupoViewHol
     public void onBindViewHolder(final GrupoViewHolder holder, final int position) {
         final Grupo s= listaGrupo.get(position);
         holder.nombreGrupoTV.setText(s.getNombre());
-        holder.nombreGrupoTV.setOnClickListener(new View.OnClickListener() {
+        holder.grupoLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), LigaActivity.class);
@@ -53,10 +54,12 @@ public class GrupoAdapter extends RecyclerView.Adapter<GrupoAdapter.GrupoViewHol
     public static class GrupoViewHolder extends RecyclerView.ViewHolder{
 
         private TextView nombreGrupoTV;
+        private LinearLayout grupoLL;
 
         public GrupoViewHolder(View itemView) {
             super(itemView);
             nombreGrupoTV = (TextView) itemView.findViewById(R.id.nombreGrupoTV);
+            grupoLL=(LinearLayout) itemView.findViewById(R.id.grupoLL);
         }
 
         public void setNombre(String nombre) {

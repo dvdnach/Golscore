@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,7 +59,7 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
         holder.nombreEquipoTV.setText(s.getNombre());
         Glide.with(context).load(s.getEscudo()).into(holder.imagen);
 
-        holder.nombreEquipoTV.setOnClickListener(new View.OnClickListener() {
+        holder.equipoLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DetallesClubActivity.class);
@@ -79,11 +80,13 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.EquipoView
 
         private TextView nombreEquipoTV;
         private ImageView imagen;
+        private LinearLayout equipoLL;
 
         public EquipoViewHolder(View itemView) {
             super(itemView);
             nombreEquipoTV = (TextView) itemView.findViewById(R.id.nombreEquipoTV);
             imagen=(ImageView) itemView.findViewById(R.id.escudoEquipoIV);
+            equipoLL=(LinearLayout) itemView.findViewById(R.id.equipoLL);
         }
         public void setNombre(String nombre) {
             nombreEquipoTV.setText(nombre);
