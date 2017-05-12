@@ -50,7 +50,7 @@ public class ClasificacionFragment extends Fragment {
         clasificacionEquipoRV.setLayoutManager(llm);
 
         listaClasificacion=new ArrayList<Equipo>();
-        adapter= new ClasificacionAdapter(listaClasificacion);
+        adapter= new ClasificacionAdapter(listaClasificacion, this.getContext());
 
         clasificacionEquipoRV.setAdapter(adapter);
 
