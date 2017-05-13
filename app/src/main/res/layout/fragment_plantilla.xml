@@ -1,14 +1,73 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context="com.example.dm2.golscore.Fragment.PlantillaFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Plantilla Fragment"/>
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/titlePorteros"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:gravity="center"
+            android:text="@string/title_porteros"
+            android:textSize="@dimen/text_12sp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/porterosRV"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/titleDefensas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:gravity="center"
+            android:text="@string/title_defensas"
+            android:textSize="@dimen/text_12sp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/defensasRV"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/titleMedios"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:gravity="center"
+            android:text="@string/title_medios"
+            android:textSize="@dimen/text_12sp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mediosRV"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/titleDelanteros"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:gravity="center"
+            android:text="@string/title_delanteros"
+            android:textSize="@dimen/text_12sp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/delanterosRV"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</ScrollView>

@@ -64,6 +64,10 @@ public class ResumenPartidosFragment extends Fragment {
 
         idPartido=getActivity().getIntent().getExtras().getString("idPartido");
 
+        listaGoles=new ArrayList<Gol>();
+        listaTarjetas=new ArrayList<Tarjeta>();
+        listaCambios=new ArrayList<Cambio>();
+
         sacarGoles();
 
         sacarTarjetas();
@@ -74,8 +78,6 @@ public class ResumenPartidosFragment extends Fragment {
 
     public void sacarGoles(){
         DatabaseReference dbClub= FirebaseDatabase.getInstance().getReference().child("Gol");
-
-        listaGoles=new ArrayList<Gol>();
 
         golesRV.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         golAdapter= new GolAdapter(listaGoles);
@@ -108,8 +110,6 @@ public class ResumenPartidosFragment extends Fragment {
     public void sacarTarjetas(){
         DatabaseReference dbClub= FirebaseDatabase.getInstance().getReference().child("Tarjeta");
 
-        listaTarjetas=new ArrayList<Tarjeta>();
-
         tarjetasRV.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         tarjetaAdapter= new TarjetaAdapter(listaTarjetas);
 
@@ -140,8 +140,6 @@ public class ResumenPartidosFragment extends Fragment {
 
     public void sacarCambios(){
         DatabaseReference dbClub= FirebaseDatabase.getInstance().getReference().child("Cambio");
-
-        listaCambios=new ArrayList<Cambio>();
 
         cambiosRV.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         cambioAdapter= new CambioAdapter(listaCambios);
