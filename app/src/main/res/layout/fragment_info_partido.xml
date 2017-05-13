@@ -20,6 +20,7 @@
                 android:layout_marginTop="@dimen/margin_10dp"
                 android:layout_marginBottom="@dimen/margin_10dp"
                 android:gravity="center"
+                android:textColor="@color/colorWhite"
                 android:textSize="@dimen/text_12sp"
                 android:text="@string/title_stadium"/>
             <LinearLayout

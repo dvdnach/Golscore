@@ -35,6 +35,7 @@ public class PantallaAfterLogin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_after_login);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         partidosAdminRV=(RecyclerView) findViewById(R.id.partidosAdminRV);
 
@@ -80,6 +81,12 @@ public class PantallaAfterLogin extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 
     public void salir(View v)

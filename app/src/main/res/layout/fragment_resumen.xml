@@ -17,6 +17,7 @@
             android:layout_marginBottom="@dimen/margin_10dp"
             android:gravity="center"
             android:text="@string/title_goles"
+            android:textColor="@color/colorWhite"
             android:textSize="@dimen/text_12sp"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/golesRV"
@@ -32,6 +33,7 @@
             android:layout_marginBottom="@dimen/margin_10dp"
             android:gravity="center"
             android:text="@string/title_tarjetas"
+            android:textColor="@color/colorWhite"
             android:textSize="@dimen/text_12sp"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/tarjetasRV"
@@ -47,6 +49,7 @@
             android:layout_marginBottom="@dimen/margin_10dp"
             android:gravity="center"
             android:text="@string/title_cambios"
+            android:textColor="@color/colorWhite"
             android:textSize="@dimen/text_12sp"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/cambiosRV"

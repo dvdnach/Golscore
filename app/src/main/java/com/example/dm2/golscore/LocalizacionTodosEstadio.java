@@ -38,6 +38,7 @@ public class LocalizacionTodosEstadio extends AppCompatActivity implements OnMap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_localizacion_estadio);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         btnVista=(Button)findViewById(R.id.btnVista);
 
@@ -102,6 +103,11 @@ public class LocalizacionTodosEstadio extends AppCompatActivity implements OnMap
             mapa.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
             btnVista.setText("Cambiar a Vista Mapa");
         }
+    }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 }

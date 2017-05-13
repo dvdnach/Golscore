@@ -143,11 +143,23 @@
                 android:layout_width="wrap_content" />
         </android.support.design.widget.TabLayout>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pagerPartidoVP"
-            android:layout_margin="@dimen/activity_horizontal_margin"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"/>
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background_app"/>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pagerPartidoVP"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"/>
+        </FrameLayout>
+
+
     </LinearLayout>
 
 </LinearLayout>
