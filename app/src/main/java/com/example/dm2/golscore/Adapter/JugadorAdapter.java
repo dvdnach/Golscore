@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.dm2.golscore.Clases.Gol;
+import com.example.dm2.golscore.Clases.Jugador;
 import com.example.dm2.golscore.LigaActivity;
 import com.example.dm2.golscore.R;
 
@@ -15,10 +16,10 @@ import java.util.List;
 
 public class JugadorAdapter extends RecyclerView.Adapter<JugadorAdapter.JugadorViewHolder> {
 
-    private List<Gol> listaGol;
+    private List<Jugador> listJugador;
 
-    public JugadorAdapter(List<Gol> listaGol) {
-        this.listaGol = listaGol;
+    public JugadorAdapter(List<Jugador> listJugador) {
+        this.listJugador = listJugador;
     }
 
     @Override
@@ -30,35 +31,26 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorAdapter.JugadorV
 
     @Override
     public void onBindViewHolder(final JugadorViewHolder holder, final int position) {
-        /*final Gol s= listaGol.get(position);
-        holder.nombreJugadorTV.setText(s.getNombre());
-        holder.nombreJugadorTV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), LigaActivity.class);
-                intent.putExtra("nombreJugador",String.valueOf(s.getNombre()));
-                intent.putExtra("idJugador",String.valueOf(s.getId()));
-                v.getContext().startActivity(intent);
-            }
-        });*/
+        final Jugador jugador= listJugador.get(position);
+        holder.nombreApellidoJugadorTV.setText(jugador.getNombre()+" "+jugador.getApellido());
     }
 
     @Override
     public int getItemCount() {
-        return listaGol.size();
+        return listJugador.size();
     }
 
     public static class JugadorViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView nombreJugadorTV;
+        private TextView nombreApellidoJugadorTV;
 
         public JugadorViewHolder(View itemView) {
             super(itemView);
-           // nombreJugadorTV = (TextView) itemView.findViewById(R.id.nombreJugadorTV);
+            nombreApellidoJugadorTV = (TextView) itemView.findViewById(R.id.nombreApellidoJugadorTV);
         }
 
         public void setNombre(String nombre) {
-            nombreJugadorTV.setText(nombre);
+            nombreApellidoJugadorTV.setText(nombre);
         }
     }
 }

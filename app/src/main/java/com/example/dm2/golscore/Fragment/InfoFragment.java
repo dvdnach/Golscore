@@ -54,7 +54,7 @@ public class InfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(new Intent(getActivity(),LocalizacionEstadio.class));
-                intent.putExtra("Equipo",idEquipo);
+                intent.putExtra("Equipo",Integer.parseInt(idEquipo));
                 startActivity(intent);
             }
         });
@@ -89,7 +89,17 @@ public class InfoFragment extends Fragment {
                         Log.e("DATABASSE ERROR",databaseError.getMessage());
                     }
                 });
+                estadioLL.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(new Intent(getActivity(),LocalizacionEstadio.class));
+                       // intent.putExtra("Equipo",Integer.parseInt(idEquipo));
+                        intent.putExtra("Equipo",idClub);
+                        startActivity(intent);
+                    }
+                });
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

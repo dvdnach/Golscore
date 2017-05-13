@@ -17,7 +17,10 @@
     <string name="title_tarjetas">TARJETAS</string>
     <string name="title_cambios">CAMBIOS</string>
     <string name="text_jugadores">Jugadores</string>
-    <string name="text_goles">GOLES</string>
+    <string name="title_porteros">PORTEROS</string>
+    <string name="title_defensas">DEFENSAS</string>
+    <string name="title_medios">MEDIOS</string>
+    <string name="title_delanteros">DELANTEROS</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
