@@ -44,7 +44,7 @@
         <activity android:name=".PantallaAfterLogin" />
         <activity android:name=".ResetearPassword" />
         <activity android:name=".LocalizacionEstadio" />
-        <activity android:name=".PruebaImagen" />
+        <activity android:name=".LocalizacionTodosEstadio" />
         <activity android:name=".DetallesPartidosActivity" />
     </application>
 
