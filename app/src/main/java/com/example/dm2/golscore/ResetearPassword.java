@@ -24,6 +24,7 @@ public class ResetearPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resetear_password);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         inputEmail = (EditText) findViewById(R.id.email);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
@@ -65,5 +66,11 @@ public class ResetearPassword extends AppCompatActivity {
                         });
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
 }

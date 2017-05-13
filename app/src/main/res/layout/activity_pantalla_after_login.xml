@@ -3,20 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin"
     tools:context="com.example.dm2.golscore.PantallaAfterLogin">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_app"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/partidosAdminRV"
         android:scrollbars="none"
+        android:padding="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:gravity="center_vertical"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Out"
+        android:text="Cerrar sessión"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/colorWhite"
+        android:padding="@dimen/activity_horizontal_margin"
         android:onClick="salir"/>
 
 </android.support.constraint.ConstraintLayout>

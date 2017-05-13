@@ -31,8 +31,8 @@ import java.util.List;
 
 public class LigaActivity extends AppCompatActivity {
 
-    private FrameLayout clubFL;
-    private LinearLayout partidosFL,clasificacionFL;
+    private FrameLayout clubFL,clasificacionFL;
+    private LinearLayout partidosFL;
     private String nombreGrupo,idGrupo;
     private RecyclerView clubRV,partidosRV, clasificacionRV;
     private List<Equipo> listaEquipo;
@@ -87,7 +87,7 @@ public class LigaActivity extends AppCompatActivity {
 
         clubFL=(FrameLayout)findViewById(R.id.clubFL);
         partidosFL=(LinearLayout)findViewById(R.id.partidosFL);
-        clasificacionFL=(LinearLayout) findViewById(R.id.clasificacionFL);
+        clasificacionFL=(FrameLayout) findViewById(R.id.clasificacionFL);
         nombreGrupo=getIntent().getExtras().getString("nombreGrupo");
         idGrupo=getIntent().getExtras().getString("idGrupo");
 

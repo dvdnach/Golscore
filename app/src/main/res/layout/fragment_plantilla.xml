@@ -15,6 +15,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin_10dp"
             android:layout_marginBottom="@dimen/margin_10dp"
+            android:textColor="@color/colorWhite"
             android:gravity="center"
             android:text="@string/title_porteros"
             android:textSize="@dimen/text_12sp"/>
@@ -32,6 +33,7 @@
             android:layout_marginBottom="@dimen/margin_10dp"
             android:gravity="center"
             android:text="@string/title_defensas"
+            android:textColor="@color/colorWhite"
             android:textSize="@dimen/text_12sp"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/defensasRV"
@@ -47,6 +49,7 @@
             android:layout_marginBottom="@dimen/margin_10dp"
             android:gravity="center"
             android:text="@string/title_medios"
+            android:textColor="@color/colorWhite"
             android:textSize="@dimen/text_12sp"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mediosRV"
@@ -62,6 +65,7 @@
             android:layout_marginBottom="@dimen/margin_10dp"
             android:gravity="center"
             android:text="@string/title_delanteros"
+            android:textColor="@color/colorWhite"
             android:textSize="@dimen/text_12sp"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/delanterosRV"

@@ -34,7 +34,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="lbl_forgot_password">¿Contraseña Olvidada?</string>
     <string name="forgot_password_msg">Introduce tu email para enviarte las instrucciones para que resetear tu contraseña</string>
-    <string name="btn_atras">Atras</string>
+    <string name="btn_atras">Atrás</string>
     <string name="btn_reset_password">Restablecer Contraseña</string>
-    <string name="hint_email">email</string>
+    <string name="hint_email">Email</string>
 </resources>
