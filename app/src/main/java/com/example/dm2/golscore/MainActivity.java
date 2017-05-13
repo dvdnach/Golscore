@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_camera) {
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
         } if (id == R.id.nav_location) {
-            intent=new Intent(MainActivity.this,LocalizacionEstadio.class);
+            intent=new Intent(MainActivity.this,LocalizacionTodosEstadio.class);
             startActivity(intent);
         } else if (id == R.id.nav_primera) {
             intent=new Intent(MainActivity.this,GrupoActivity.class);
