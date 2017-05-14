@@ -1,9 +1,12 @@
 package com.example.dm2.golscore;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -16,10 +19,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dm2.golscore.Adapter.PagerAdapter;
 import com.example.dm2.golscore.Adapter.PagerPartidosAdapter;
+import com.example.dm2.golscore.Adapter.PartidoAdminAdapter;
 import com.example.dm2.golscore.Clases.Club;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Partido;
@@ -42,6 +47,8 @@ public class DetallesPartidosActivity extends AppCompatActivity {
     private TextView nombreLocalDetallesTV,estadoPartidoTV,golesLocalDetallesTV,separdorDetallesTV,golesVisitanteDetallesTV,fechaDetallesTV,nombreVisitanteDetallesTV;
     private ImageView escudoVisitanteDetallesIV,escudoLocalDetallesIV;
     int color,colorVerde;
+    private int idEquipoLocal;
+    private int idEquipoVisitante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +73,7 @@ public class DetallesPartidosActivity extends AppCompatActivity {
 
         FirebaseDatabase dbPartido=FirebaseDatabase.getInstance();
         dbPartido.getReference().child("Partido").addValueEventListener(new ValueEventListener() {
-            int idEquipoLocal, idEquipoVisitante,idClub, idNotificacion = 0;
+            int idClub, idNotificacion = 0;
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
@@ -79,7 +86,7 @@ public class DetallesPartidosActivity extends AppCompatActivity {
                         fechaDetallesTV.setText(partido.getFecha()+" - "+partido.getHora());
                         if (idNotificacion>0){
                             String strTittle = "GOL";
-                            String strMarcador = Integer.toString(partido.getGol_local())+" - "+Integer.toString(partido.getGol_visitante());
+                            String strMarcador = nombreLocalDetallesTV.getText()+" "+Integer.toString(partido.getGol_local())+" - "+Integer.toString(partido.getGol_visitante())+" "+nombreVisitanteDetallesTV.getText();
                             sendNotification(strTittle, strMarcador);
                         }
                         idNotificacion ++;
@@ -146,10 +153,14 @@ public class DetallesPartidosActivity extends AppCompatActivity {
 
         informacionPartidoTL=(TabLayout) findViewById(R.id.informacionPartidoTL);
         informacionPartidoTL.setTabMode(TabLayout.MODE_FIXED);
-
         pagerPartidoVP=(ViewPager)findViewById(R.id.pagerPartidoVP);
+       // informacionPartidoTL.getTabAt(0).setText("Administracion Partido");
+       /* if(.equals(PartidoAdminAdapter.class))
+        {
 
-        PagerPartidosAdapter adapter = new PagerPartidosAdapter(getSupportFragmentManager(), informacionPartidoTL.getTabCount());
+        }*/
+        PagerPartidosAdapter adapter = new PagerPartidosAdapter(getSupportFragmentManager(),
+                informacionPartidoTL.getTabCount());
         pagerPartidoVP.setAdapter(adapter);
         pagerPartidoVP.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(informacionPartidoTL));
         informacionPartidoTL.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -177,13 +188,15 @@ public class DetallesPartidosActivity extends AppCompatActivity {
                 PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.balon);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_notifications_black_24dp)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(messageTitle)
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
+                .setContentIntent(pendingIntent)
+                .setLargeIcon(bm);
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -29,16 +30,20 @@ public class ClasificacionAdapter extends RecyclerView.Adapter<ClasificacionAdap
     private List<Equipo> listaClasificacion;
     private Bitmap bitmap;
     private Context context;
+    private int idEquipo;
+    private int color;
 
-    public ClasificacionAdapter(List<Equipo> listaClasificacion, Context context) {
+    public ClasificacionAdapter(List<Equipo> listaClasificacion, Context context,int idEquipo) {
         this.listaClasificacion = listaClasificacion;
         this.context = context;
+        this.idEquipo=idEquipo;
     }
 
     @Override
     public ClasificacionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.clasificacion_list_item,parent,false);
         ClasificacionViewHolder holder=new ClasificacionViewHolder(view);
+        color=parent.getResources().getColor(R.color.colorPrimary);
         return  holder;
     }
 
@@ -50,6 +55,16 @@ public class ClasificacionAdapter extends RecyclerView.Adapter<ClasificacionAdap
         holder.golesEquipoTV.setText(Integer.toString(s.getTotal_goles()));
         holder.puntosEquipoTV.setText(Integer.toString(s.getPuntos()));
         Glide.with(context).load(s.getEscudo()).into(holder.imagen);
+        if(s.getId()==idEquipo){
+            holder.posicionEquipoTV.setTypeface(null, Typeface.BOLD);
+            holder.nombreEquipoTV.setTypeface(null, Typeface.BOLD);
+            holder.golesEquipoTV.setTypeface(null, Typeface.BOLD);
+            holder.puntosEquipoTV.setTypeface(null, Typeface.BOLD);
+            holder.posicionEquipoTV.setTextColor(color);
+            holder.nombreEquipoTV.setTextColor(color);
+            holder.golesEquipoTV.setTextColor(color);
+            holder.puntosEquipoTV.setTextColor(color);
+        }
     }
 
     @Override

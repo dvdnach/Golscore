@@ -194,7 +194,7 @@ public class LigaActivity extends AppCompatActivity {
         clasificacionRV.setLayoutManager(llm);
 
         listaClasificacion=new ArrayList<Equipo>();
-        adapterClasificacion= new ClasificacionAdapter(listaClasificacion,this.getBaseContext());
+        adapterClasificacion= new ClasificacionAdapter(listaClasificacion,this.getBaseContext(),0);
 
         clasificacionRV.setAdapter(adapterClasificacion);
 

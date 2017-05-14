@@ -50,8 +50,10 @@ public class ClasificacionFragment extends Fragment {
         llm.setStackFromEnd(true);
         clasificacionEquipoRV.setLayoutManager(llm);
 
+        String idEquipo=getActivity().getIntent().getExtras().getString("idEquipo");
+
         listaClasificacion=new ArrayList<Equipo>();
-        adapter= new ClasificacionAdapter(listaClasificacion, this.getContext());
+        adapter= new ClasificacionAdapter(listaClasificacion, this.getContext(),Integer.parseInt(idEquipo));
 
         clasificacionEquipoRV.setAdapter(adapter);
 

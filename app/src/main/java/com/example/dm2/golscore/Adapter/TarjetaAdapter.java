@@ -96,9 +96,9 @@ public class TarjetaAdapter extends RecyclerView.Adapter<TarjetaAdapter.TarjetaV
                                 holder.tarjetaVisitanteTV.setText(minuto+"' "+nombreJugador+" "+apellidoJugador);
                                 holder.tajetaLocalLL.setVisibility(View.GONE);
                                 if(color.equalsIgnoreCase("Amarilla")){
-                                    holder.tarjetaLocalIV.setImageBitmap(btmAmarilla);
+                                    holder.tarjetaVisitanteIV.setImageBitmap(btmAmarilla);
                                 }else if(color.equalsIgnoreCase("Roja")){
-                                    holder.tarjetaLocalIV.setImageBitmap(btmRoja);
+                                    holder.tarjetaVisitanteIV.setImageBitmap(btmRoja);
                                 }
                             }
                         }
