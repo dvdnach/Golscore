@@ -13,12 +13,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.dm2.golscore.Adapter.CambioAdapter;
-import com.example.dm2.golscore.Adapter.EquipoAdapter;
 import com.example.dm2.golscore.Adapter.GolAdapter;
 import com.example.dm2.golscore.Adapter.TarjetaAdapter;
 import com.example.dm2.golscore.Clases.Cambio;
-import com.example.dm2.golscore.Clases.Categoria;
-import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Gol;
 import com.example.dm2.golscore.Clases.Tarjeta;
 import com.example.dm2.golscore.R;

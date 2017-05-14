@@ -2,25 +2,24 @@ package com.example.dm2.golscore;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-import com.example.dm2.golscore.Adapter.CambioAdapter;
 import com.example.dm2.golscore.Adapter.CategoriaAdapter;
-import com.example.dm2.golscore.Clases.Cambio;
 import com.example.dm2.golscore.Clases.Categoria;
-import com.example.dm2.golscore.Clases.Categoria;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView categoriaRV;
     private List<Categoria> listaCategoria;
     private CategoriaAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,9 +104,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         Intent intent;
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_log_in) {
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
-        } if (id == R.id.nav_location) {
+        }
+        if (id == R.id.nav_log_out) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                FirebaseAuth.getInstance().signOut();
+            } else {
+                Toast.makeText(this.getApplicationContext(),"No hay ninguna sesion iniciada",Toast.LENGTH_LONG).show();
+            }
+        }
+        if (id == R.id.nav_location) {
             intent=new Intent(MainActivity.this,LocalizacionTodosEstadio.class);
             startActivity(intent);
         } else if (id == R.id.nav_primera) {
@@ -118,6 +127,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent=new Intent(MainActivity.this,GrupoActivity.class);
             intent.putExtra("nombreCategoria","Preferente");
             intent.putExtra("idCategoria","2");
+            startActivity(intent);
+        } else if (id == R.id.nav_regional) {
+            intent=new Intent(MainActivity.this,GrupoActivity.class);
+            intent.putExtra("nombreCategoria","Regional");
+            intent.putExtra("idCategoria","3");
+            startActivity(intent);
+        } else if (id == R.id.nav_regional_femenina) {
+            intent=new Intent(MainActivity.this,GrupoActivity.class);
+            intent.putExtra("nombreCategoria","Regional Femenina");
+            intent.putExtra("idCategoria","4");
             startActivity(intent);
         }
 

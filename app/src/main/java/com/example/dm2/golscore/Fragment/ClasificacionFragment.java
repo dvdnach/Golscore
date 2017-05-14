@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dm2.golscore.Adapter.ClasificacionAdapter;
-import com.example.dm2.golscore.Adapter.PartidoAdapter;
 import com.example.dm2.golscore.Clases.Equipo;
-import com.example.dm2.golscore.Clases.Partido;
 import com.example.dm2.golscore.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

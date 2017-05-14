@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dm2.golscore.Clases.Club;
 import com.example.dm2.golscore.DetallesClubActivity;

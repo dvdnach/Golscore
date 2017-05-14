@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.dm2.golscore.Adapter.GolAdapter;
 import com.example.dm2.golscore.Adapter.JugadorAdapter;
-import com.example.dm2.golscore.Clases.Gol;
 import com.example.dm2.golscore.Clases.Jugador;
 import com.example.dm2.golscore.R;
 import com.google.firebase.database.DataSnapshot;
@@ -21,8 +19,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;

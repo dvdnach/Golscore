@@ -1,6 +1,5 @@
 package com.example.dm2.golscore;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;

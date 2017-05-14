@@ -11,8 +11,6 @@ import android.widget.TextView;
 import com.example.dm2.golscore.Clases.Grupo;
 import com.example.dm2.golscore.LigaActivity;
 import com.example.dm2.golscore.R;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 

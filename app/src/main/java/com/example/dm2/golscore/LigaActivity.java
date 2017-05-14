@@ -1,7 +1,5 @@
 package com.example.dm2.golscore;
 
-import android.content.res.Configuration;
-import android.icu.text.MessagePattern;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
