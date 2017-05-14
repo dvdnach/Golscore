@@ -1,5 +1,6 @@
 package com.example.dm2.golscore.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -102,6 +103,7 @@ public class PartidoAdminAdapter extends RecyclerView.Adapter<PartidoAdminAdapte
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DetallesPartidosActivity.class);
                 intent.putExtra("idPartido",String.valueOf(partido.getId()));
+                intent.putExtra("Clase", PartidoAdminAdapter.this.getClass().toString());
                 v.getContext().startActivity(intent);
             }
         });

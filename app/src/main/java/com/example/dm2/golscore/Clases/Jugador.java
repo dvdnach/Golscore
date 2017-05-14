@@ -9,6 +9,8 @@ public class Jugador {
     private String posicion;
 
     public Jugador() {
+        this.nombre="Selecciona";
+        this.apellido="Jugador";
     }
 
     public Jugador(int id, String apellido, int id_equipo, String nombre, String posicion) {
@@ -61,6 +63,6 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return super.toString();
+        return this.getNombre()+" "+this.getApellido();
     }
 }

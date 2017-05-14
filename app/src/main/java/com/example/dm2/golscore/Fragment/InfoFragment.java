@@ -50,14 +50,14 @@ public class InfoFragment extends Fragment {
         escudo = (ImageView)getView().findViewById(R.id.escudoIV);
 
         final String idEquipo=getActivity().getIntent().getExtras().getString("idEquipo");
-        estadioLL.setOnClickListener(new View.OnClickListener() {
+       /* estadioLL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(new Intent(getActivity(),LocalizacionEstadio.class));
                 intent.putExtra("Equipo",Integer.parseInt(idEquipo));
                 startActivity(intent);
             }
-        });
+        });*/
 
         //final String idEquipo=getActivity().getIntent().getExtras().getString("idEquipo");
 
