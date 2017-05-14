@@ -165,12 +165,12 @@ public class AdminFragment extends Fragment {
                                        if(valorSpinnerLocal.equals("Selecciona Jugador"))
                                        {
                                            child.child("gol_visitante").getRef().setValue(num);
-                                           db.child("Gol").child("27").setValue(new Gol(27,jugadorSeleccionado.getId(),jugadorSeleccionado.getId_equipo(),59));
+                                           db.child("Gol").child("27").setValue(new Gol(27,jugadorSeleccionado.getId(),Integer.parseInt(idPartido),59));
                                        }
                                        else
                                        {
                                            child.child("gol_local").getRef().setValue(num);
-                                           db.child("Gol").child("17").setValue(new Gol(45,jugadorSeleccionado.getId(),jugadorSeleccionado.getId_equipo(),45));
+                                           db.child("Gol").child("17").setValue(new Gol(45,jugadorSeleccionado.getId(),Integer.parseInt(idPartido),45));
                                            //new ResumenPartidosFragment();
                                        }
 

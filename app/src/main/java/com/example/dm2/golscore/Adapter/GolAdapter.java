@@ -71,7 +71,8 @@ public class GolAdapter extends RecyclerView.Adapter<GolAdapter.GolViewHolder> {
                             if(partido.getId()==idPartido){
                                 if(partido.getEq_local()==idEquipo){
                                     jugar="local";
-                                }else if(partido.getEq_visitante()==idEquipo){
+                                }
+                                if(partido.getEq_visitante()==idEquipo){
                                     jugar="visitante";
                                 }
                             }
@@ -82,12 +83,11 @@ public class GolAdapter extends RecyclerView.Adapter<GolAdapter.GolViewHolder> {
                                 holder.goleadorVisitanteLL.setVisibility(View.GONE);
                             }
                             if(jugar.equalsIgnoreCase("visitante")){
-                                holder.goleadorVisitanteTV.setText(minuto+"' "+nombreJugador+" "+apellidoJugador);
+                                holder.goleadorVisitanteTV.setText(minuto+"' - "+nombreJugador+" "+apellidoJugador);
                                 holder.goleadorLocalLL.setVisibility(View.GONE);
                             }
                         }
                     }
-
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
