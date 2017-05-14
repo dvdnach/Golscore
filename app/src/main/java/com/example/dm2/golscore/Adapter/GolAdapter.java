@@ -1,6 +1,5 @@
 package com.example.dm2.golscore.Adapter;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,12 +8,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.dm2.golscore.Clases.Club;
-import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Gol;
 import com.example.dm2.golscore.Clases.Jugador;
 import com.example.dm2.golscore.Clases.Partido;
-import com.example.dm2.golscore.LigaActivity;
 import com.example.dm2.golscore.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

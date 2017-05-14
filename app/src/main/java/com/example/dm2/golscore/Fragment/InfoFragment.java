@@ -1,6 +1,5 @@
 package com.example.dm2.golscore.Fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,13 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dm2.golscore.Clases.Club;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.LocalizacionEstadio;
-import com.example.dm2.golscore.MainActivity;
 import com.example.dm2.golscore.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

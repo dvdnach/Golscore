@@ -1,14 +1,12 @@
 package com.example.dm2.golscore;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.example.dm2.golscore.Adapter.EquipoAdapter;
 import com.example.dm2.golscore.Adapter.GrupoAdapter;
-import com.example.dm2.golscore.Clases.Gol;
 import com.example.dm2.golscore.Clases.Grupo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -14,27 +14,26 @@
             android:id="@+id/nav_preferente"
             android:icon="@drawable/logoscompeticiones"
             android:title="Preferente" />
-        <!--<item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="Share" />
         <item
-            android:id="@+id/nav_send"
-            android:icon="@drawable/ic_menu_send"
-            android:title="Send" />-->
-        <!-- Sección de configuración -->
+            android:id="@+id/nav_regional"
+            android:icon="@drawable/logoscompeticiones"
+            android:title="Regional" />
+        <item
+            android:id="@+id/nav_regional_femenina"
+            android:icon="@drawable/logoscompeticiones"
+            android:title="Regional Femenina" />
         <item
             android:id="@+id/configuration_section"
             android:title="Usuarios">
             <menu>
                 <item
-                    android:id="@+id/nav_camera"
+                    android:id="@+id/nav_log_in"
                     android:icon="@drawable/ic_fingerprint_black_24dp"
                     android:enabled="true"
                     android:title="Iniciar sesion" />
                 <item
                     android:id="@+id/nav_log_out"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:icon="@android:drawable/ic_lock_power_off"
                     android:title="Cerrar sesion" />
             </menu>

@@ -8,9 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.dm2.golscore.Clases.Club;
-import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Estadio;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;

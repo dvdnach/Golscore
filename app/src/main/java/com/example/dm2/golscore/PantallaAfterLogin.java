@@ -1,6 +1,5 @@
 package com.example.dm2.golscore;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.example.dm2.golscore.Adapter.PartidoAdapter;
 import com.example.dm2.golscore.Adapter.PartidoAdminAdapter;
 import com.example.dm2.golscore.Clases.Partido;
 import com.google.firebase.auth.FirebaseAuth;

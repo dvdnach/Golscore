@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.dm2.golscore.Clases.Club;
 import com.example.dm2.golscore.Clases.Equipo;
@@ -89,7 +88,6 @@ public class InfoPartidosFragment extends Fragment {
                         Log.e("DATABASSE ERROR",databaseError.getMessage());
                     }
                 });
-                Log.e("idEquipo",idEquipoLocal+" ");
                 estadioPartidoLL.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

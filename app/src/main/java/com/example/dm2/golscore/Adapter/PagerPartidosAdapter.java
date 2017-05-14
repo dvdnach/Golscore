@@ -1,10 +1,8 @@
 package com.example.dm2.golscore.Adapter;
 
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
 import com.example.dm2.golscore.Fragment.AdminFragment;
 import com.example.dm2.golscore.Fragment.InfoPartidosFragment;

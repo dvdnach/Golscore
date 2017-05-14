@@ -1,6 +1,5 @@
 package com.example.dm2.golscore;
 
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -9,31 +8,24 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.provider.ContactsContract;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.dm2.golscore.Adapter.PagerAdapter;
 import com.example.dm2.golscore.Adapter.PagerPartidosAdapter;
-import com.example.dm2.golscore.Adapter.PartidoAdminAdapter;
-import com.example.dm2.golscore.Clases.Club;
 import com.example.dm2.golscore.Clases.Equipo;
 import com.example.dm2.golscore.Clases.Partido;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -154,11 +146,6 @@ public class DetallesPartidosActivity extends AppCompatActivity {
         informacionPartidoTL=(TabLayout) findViewById(R.id.informacionPartidoTL);
         informacionPartidoTL.setTabMode(TabLayout.MODE_FIXED);
         pagerPartidoVP=(ViewPager)findViewById(R.id.pagerPartidoVP);
-       // informacionPartidoTL.getTabAt(0).setText("Administracion Partido");
-       /* if(.equals(PartidoAdminAdapter.class))
-        {
-
-        }*/
         PagerPartidosAdapter adapter = new PagerPartidosAdapter(getSupportFragmentManager(),
                 informacionPartidoTL.getTabCount());
         pagerPartidoVP.setAdapter(adapter);
