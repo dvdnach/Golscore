@@ -15,14 +15,14 @@
             android:gravity="center"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/text_12sp"
-            android:text="Equipo local"/>
+            android:text="Jugadores locales"/>
 
         <Spinner
             android:id="@+id/jugLocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dropdown"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorWhite"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,13 +36,13 @@
                 android:gravity="center"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/text_12sp"
-                android:text="Equipo visitante"/>
+                android:text="Jugadores visitantes"/>
             <Spinner
                 android:id="@+id/jugVisitante"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dropdown"
-                android:background="@color/colorAccent"
+                android:background="@color/colorWhite"
                 />
 
             <TextView
@@ -55,15 +55,87 @@
                 android:textSize="@dimen/text_12sp"
                 android:text="Accion"/>
 
-            <Button
-                android:id="@+id/pruebaGol"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="gol"
-                />
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+                <Button
+                    android:id="@+id/pruebaGol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="gol" />
+                <Button
+                    android:id="@+id/TarjetaAmarillaB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:maxLines="1"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="Amarilla" />
+
+                <Button
+                    android:id="@+id/TarjetaRojaB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="Roja" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_12sp"
+        android:text="Jugador local entra"/>
 
+    <Spinner
+        android:id="@+id/jugLocalEntra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:background="@color/colorWhite"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/text_12sp"
+            android:text="Jugador visitante entra"/>
+        <Spinner
+            android:id="@+id/jugVisitanteEntra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
+            android:background="@color/colorWhite"
+            />
+            <Button
+                android:id="@+id/cambioB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Cambio" />
+
+        </LinearLayout>
 
 
    </LinearLayout>
